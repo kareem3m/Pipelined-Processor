@@ -2,7 +2,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY Fetch IS
+ENTITY FetchStage IS
     PORT (
         clock : IN std_logic;
         resetPC : IN std_logic;
@@ -11,9 +11,9 @@ ENTITY Fetch IS
         jumpAddress : IN std_logic_vector(19 DOWNTO 0);
         instruction : OUT std_logic_vector(31 DOWNTO 0)
     );
-END Fetch;
+END FetchStage;
 
-ARCHITECTURE rtl OF Fetch IS
+ARCHITECTURE rtl OF FetchStage IS
     COMPONENT RAM
         PORT (
             clock : IN std_logic;
