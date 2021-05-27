@@ -48,9 +48,9 @@ BEGIN
         ELSE SPOUTminus2 WHEN push = '1' AND pop = '0'
         ELSE address;
 
-    SPIN <= x"FFFFD" WHEN resetSP = '1'
-        ELSE SPOUTminus2 WHEN push = '1'
-        ELSE SPOUTplus2 WHEN pop = '1'
+    SPIN <= x"FFFFE" WHEN resetSP = '1'
+        ELSE SPOUTminus2 WHEN push = '1' AND pop = '0'
+        ELSE SPOUTplus2 WHEN pop = '1' AND push = '0' AND SPOUT /= x"FFFFE"
         ELSE SPOUT;
 
     SPOUTplus2 <= std_logic_vector(unsigned(SPOUT) + 2);
