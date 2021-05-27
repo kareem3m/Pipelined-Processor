@@ -6,7 +6,7 @@ ENTITY RAM IS
     PORT (
         clock : IN std_logic;
         address : IN std_logic_vector (19 DOWNTO 0);
-        dataIN : IN std_logic_vector (15 DOWNTO 0);
+        dataIN : IN std_logic_vector (31 DOWNTO 0);
         dataOUT : OUT std_logic_vector (31 DOWNTO 0);
         writeEnable : IN std_logic
     );
@@ -20,7 +20,8 @@ BEGIN
     BEGIN
         IF rising_edge(clock) THEN
             IF (writeEnable = '1') THEN
-                ram_block(to_integer(unsigned(address))) <= dataIN;
+                ram_block(to_integer(unsigned(address))) <= dataIN(31 downto 16);
+                ram_block(to_integer(unsigned(address) + 1)) <= dataIN(15 downto 0);
             END IF;
 
         END IF;
