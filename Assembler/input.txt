@@ -1,0 +1,6 @@
+MOV R0, R2
+ADD R0, R2
+DEC R1
+INC R0
+IADD r2,8
+std r1, 5(R1)
