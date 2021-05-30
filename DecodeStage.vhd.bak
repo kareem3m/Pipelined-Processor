@@ -1,0 +1,13 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY DecodeStage IS
+    PORT (
+        instruction :IN std_logic_vector(31 DOWNTO 0);
+    );
+END DecodeStage;
+
+ARCHITECTURE Dec OF DecodeStage IS
+BEGIN
+	
+END Dec;
