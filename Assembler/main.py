@@ -10,18 +10,26 @@ Registers={
     "R7":"0111",
 }
 
-OneOperand={
+NoOperand={
 #One Operand
 "NOP": "000000", 
 "SETC": "000001", 
 "CLRC": "000010",
+#Branch
+
+"RET": "110101", 
+"RTI": "100110",
+
+}
+OneOperand={
+#One Operand
 "CLR": "000011",
 "NOT": "000100",
 "INC":"000101",
 "DEC":"000110",
 "NEG":"000111",
-"Out": "001000",
-"In" : "001001",
+"OUT": "001000",
+"IN" : "001001",
 
 #Two Operands
 "RLC": "011000",
@@ -37,8 +45,6 @@ OneOperand={
 "JC": "110010",
 "JMP": "110011",
 "CALL": "110100",
-"RET": "110101", 
-"RTI": "100110",
 }
 
 
@@ -68,10 +74,23 @@ def ReadFile(path):
     txt=txt.upper()
     return txt
 
+def HandleComments(txt):
+    Lines = txt.splitlines() 
+    LinesNoComments = []
+    for line in Lines:
+        x=line.find('#')
+        if(x!=-1):
+            line=line[:x]
+            line=line.strip()
+        if(line!=''):    
+            LinesNoComments.append(line)
+    print(LinesNoComments)
+    return LinesNoComments
 file = open("output.txt", "w")
 instructions=[]
+
 def Main(Lines):   
-    Lines=Lines.split('\n')
+    Lines=HandleComments(Lines)
     for i in range(len(Lines)):
         Lines[i]=Lines[i].replace(',',' ')
         Lines[i]=Lines[i].replace('(',' ')
@@ -80,17 +99,20 @@ def Main(Lines):
         my_str = combine_whitespave.sub(" ", Lines[i]).strip()
         instructions.append(my_str.split(' '))
     for i in instructions:
-        if i[0] in OneOperand:
-            file.write(OneOperand[i[0]]+Registers[i[1]]+"000000"+'\n')
-        if i[0] in TwoOperands:
+        if i[0] in NoOperand:
+            file.write(NoOperand[i[0]]+"1111111100"+'\n')
+        elif i[0] in OneOperand:
+            file.write(OneOperand[i[0]]+Registers[i[1]]+"111100"+'\n')
+        elif i[0] in TwoOperands:
             file.write(TwoOperands[i[0]]+Registers[i[1]]+Registers[i[2]]+"00"+'\n')
-        if i[0] in Offset:
+        elif i[0] in Offset:
             file.write(Offset[i[0]]+Registers[i[1]]+Registers[i[3]]+"00"+'\n')
-            file.write(bin(int(i[2]))[2:].zfill(16)+'\n')
-        if i[0] in Immediate:
-            file.write(Immediate[i[0]]+Registers[i[1]]+"000000"+'\n')
-            file.write(bin(int(i[2]))[2:].zfill(16)+'\n')
-
+            file.write(bin(int(i[2],16))[2:].zfill(16)+'\n')
+        elif i[0] in Immediate:
+            file.write(Immediate[i[0]]+Registers[i[1]]+"111100"+'\n')
+            file.write(bin(int(i[2],16))[2:].zfill(16)+'\n')
+        else :
+            print(i[0])
       
 
           
