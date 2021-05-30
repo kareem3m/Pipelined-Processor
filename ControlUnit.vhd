@@ -4,7 +4,7 @@ USE ieee.numeric_std.ALL;
 ENTITY ControlUnit IS
     PORT (
         OpCode:IN std_logic_vector(5 DOWNTO 0);
-        Immediate,Offset,Alu_EN,Mem_Read,Mem_Write,WB,Mem_To_Reg,Push,Pop,Port_Signal:OUT std_logic
+        Immediate,Offset,Alu_EN,Mem_Read,Mem_Write,WB,Mem_To_Reg,Push,Pop,Port_in, Port_out:OUT std_logic
 
     );
 END ControlUnit;
@@ -29,6 +29,8 @@ begin
     ELSE '0';
     WB <='1' WHEN OpCode(5 DOWNTO 4) = "01" OR (OpCode(5 DOWNTO 4)="00" AND (NOT(OpCode(3 DOWNTO 0) = "0000" OR OpCode(3 DOWNTO 0) = "0001" OR OpCode(3 DOWNTO 0) = "0010"))) OR (OpCode(5 DOWNTO 4)="10" AND (NOT(OpCode(3 DOWNTO 0) = "0000" OR OpCode(3 DOWNTO 0) = "0100")))
     ELSE '0';
-    Port_Signal <= '1' WHEN OpCode = "001000" OR OpCode = "001001"
+    Port_in <= '1' WHEN OpCode = "001001"
+    ELSE '0';
+    Port_out <= '1' WHEN OpCode = "001000"
     ELSE '0';
 end Control;
