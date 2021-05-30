@@ -98,22 +98,30 @@ def Main(Lines):
         combine_whitespave = re.compile(r"\s+")
         my_str = combine_whitespave.sub(" ", Lines[i]).strip()
         instructions.append(my_str.split(' '))
+    address=0;
+    instr = ["0000000000000000\n"] * 28
     for i in instructions:
-        if i[0] in NoOperand:
-            file.write(NoOperand[i[0]]+"1111111100"+'\n')
+        if i[0]=='.ORG':
+            address = int(i[1])
+            address -= 1
+        elif i[0] in NoOperand:
+            instr[address] = NoOperand[i[0]]+"1111111100"+'\n'
         elif i[0] in OneOperand:
-            file.write(OneOperand[i[0]]+Registers[i[1]]+"111100"+'\n')
+            instr[address] = OneOperand[i[0]]+Registers[i[1]]+"111100"+'\n'
         elif i[0] in TwoOperands:
-            file.write(TwoOperands[i[0]]+Registers[i[1]]+Registers[i[2]]+"00"+'\n')
+            instr[address] = TwoOperands[i[0]]+Registers[i[1]]+Registers[i[2]]+"00"+'\n'
         elif i[0] in Offset:
-            file.write(Offset[i[0]]+Registers[i[1]]+Registers[i[3]]+"00"+'\n')
-            file.write(bin(int(i[2],16))[2:].zfill(16)+'\n')
+            instr[address] = Offset[i[0]]+Registers[i[1]]+Registers[i[3]]+"00"+'\n'
+            instr[address] = bin(int(i[2],16))[2:].zfill(16)+'\n'
         elif i[0] in Immediate:
-            file.write(Immediate[i[0]]+Registers[i[1]]+"111100"+'\n')
-            file.write(bin(int(i[2],16))[2:].zfill(16)+'\n')
-        else :
-            print(i[0])
-      
+            instr[address] = Immediate[i[0]]+Registers[i[1]]+"111100"+'\n'
+            instr[address] = bin(int(i[2],16))[2:].zfill(16)+'\n'
+        elif re.match('^[-+]?[0-9]+$', i[0]):
+            instr[address] = bin(int(i[0]))[2:].zfill(16)+'\n'
+        address += 1
+    for line in instr:
+        file.write(line) 
+        
 
           
 
