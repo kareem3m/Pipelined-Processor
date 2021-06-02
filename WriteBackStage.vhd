@@ -19,7 +19,7 @@ ARCHITECTURE rtl OF WriteBackStage IS
 BEGIN
     PROCESS (clock)
     BEGIN
-        IF falling_edge(clock) THEN
+        IF rising_edge(clock) THEN
             IF memoryToReg = '1' THEN
                 writeData <= memoryOut;
             ELSE 
