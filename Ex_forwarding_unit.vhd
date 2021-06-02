@@ -3,7 +3,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 use ieee.numeric_std.all;
 
-ENTITY ForwardingUnit IS
+ENTITY Ex_forwarding_unit IS
     PORT (
         RdestAddress : IN std_logic_vector (3 DOWNTO 0);
         RsrcAddress : IN std_logic_vector (3 DOWNTO 0);
@@ -17,9 +17,9 @@ ENTITY ForwardingUnit IS
         SrcSel : OUT std_logic_vector (1 DOWNTO 0)
 
     );
-END ForwardingUnit;
+END Ex_forwarding_unit;
 
-ARCHITECTURE rtl OF ForwardingUnit IS
+ARCHITECTURE rtl OF Ex_forwarding_unit IS
     
 BEGIN
         DestSel <= "11" WHEN inPortSignal = '1'
