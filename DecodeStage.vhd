@@ -5,24 +5,49 @@ ENTITY DecodeStage IS
     PORT (
 
         instruction,WB_Data_IN : IN std_logic_vector(31 DOWNTO 0);
-        WB_Address_IN: IN  std_logic_vector(3 DOWNTO 0);
-        WB_Signal,Clk:IN std_logic ;
-        RS,RD,SignExtend_OUT:OUT std_logic_vector(31 DOWNTO 0)
-
+        WB_Address_IN,RDest_Ex: IN  std_logic_vector(3 DOWNTO 0);
+        WB_Signal,Clk,Mem_Read_Ex,JMP,RST:IN std_logic ;  -- JMP OR RST " ONE SIGNAL OR 2" "FROM WHERE ??????"
+        Decode_Buffer:OUT std_logic_vector(127 DOWNTO 0)
     );
 END DecodeStage;
 ARCHITECTURE Dec OF DecodeStage IS
 
 COMPONENT REG
-        GENERIC (
-            N : integer
+    GENERIC (
+        N : integer
+    );
+    PORT (
+        clock, clear, enable : IN std_logic;
+        d : IN std_logic_vector(N - 1 DOWNTO 0);
+        q : OUT std_logic_vector(N - 1 DOWNTO 0)
+    );
+END COMPONENT;
+
+COMPONENT ControlUnit 
+    PORT (
+            OpCode:IN std_logic_vector(5 DOWNTO 0);
+            Immediate,Offset,Alu_EN,Mem_Read,Mem_Write,WB,Mem_To_Reg,Push,Pop,Port_in, Port_out:OUT std_logic
+
         );
-        PORT (
-            clock, clear, enable : IN std_logic;
-            d : IN std_logic_vector(N - 1 DOWNTO 0);
-            q : OUT std_logic_vector(N - 1 DOWNTO 0)
+END COMPONENT;
+
+COMPONENT HazardDetectionUnit
+PORT (
+    Rsource_Decode,Rdest_Decode, RDest_Excute: IN std_logic_vector(3 DOWNTO 0);
+    Mem_Read: IN std_logic;
+    No_Change,Shift_Disable,Insert_Bubble:OUT std_logic
+);
+END COMPONENT;
+
+COMPONENT Falling_register 
+    generic (REG_SIZE: integer := 32);
+        port(
+            clk, rst, enable : in std_logic;
+            d : in std_logic_vector (REG_SIZE-1 downto 0);
+            q : out std_logic_vector (REG_SIZE-1 downto 0)
         );
-    END COMPONENT;
+END COMPONENT;
+
 SIGNAL R0_EN :std_logic;
 SIGNAL R1_EN :std_logic;
 SIGNAL R2_EN :std_logic;
@@ -40,6 +65,30 @@ SIGNAL R4_OUT:std_logic_vector(31 DOWNTO 0);
 SIGNAL R5_OUT:std_logic_vector(31 DOWNTO 0);
 SIGNAL R6_OUT:std_logic_vector(31 DOWNTO 0);
 SIGNAL R7_OUT:std_logic_vector(31 DOWNTO 0);
+
+SIGNAL Immediate_SIG :std_logic;
+SIGNAL Offset_SIG :std_logic;
+SIGNAL Alu_EN_SIG :std_logic;
+SIGNAL Mem_Read_SIG :std_logic;
+SIGNAL Mem_Write_SIG :std_logic;
+SIGNAL WB_SIG :std_logic;
+SIGNAL Mem_To_Reg_SIG :std_logic;
+SIGNAL Push_SIG :std_logic;
+SIGNAL Pop_SIG :std_logic;
+SIGNAL Port_in_SIG :std_logic;
+SIGNAL Port_out_SIG :std_logic;
+
+SIGNAL No_Change_SIG :std_logic;
+SIGNAL Shift_Disable_SIG :std_logic;
+SIGNAL Insert_Bubble_SIG :std_logic;
+
+SIGNAL Clear_Buffer :std_logic;
+SIGNAL Input_Buffer :std_logic_vector(127 DOWNTO 0);
+SIGNAL Output_Buffer :std_logic_vector(127 DOWNTO 0);
+
+SIGNAL RS :std_logic_vector (31 DOWNTO 0);
+SIGNAL RD :std_logic_vector (31 DOWNTO 0);
+SIGNAL SignExtend_OUT :std_logic_vector (31 DOWNTO 0);
 begin
     
     R0 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R0_EN,WB_Data_IN,R0_OUT);
@@ -50,7 +99,12 @@ begin
     R5 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R5_EN,WB_Data_IN,R5_OUT);
     R6 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R6_EN,WB_Data_IN,R6_OUT);
     R7 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R7_EN,WB_Data_IN,R7_OUT);
+
+    CU : ControlUnit PORT MAP(instruction(31 DOWNTO 26),Immediate_SIG,Offset_SIG,Alu_EN_SIG,Mem_Read_SIG,Mem_Write_SIG,WB_SIG,Mem_To_Reg_SIG,Push_SIG,Pop_SIG,Port_in_SIG, Port_out_SIG);  
+    HU : HazardDetectionUnit PORT MAP(instruction(21 DOWNTO 18),instruction(25 DOWNTO 22),RDest_Ex,Mem_Read_Ex,No_Change_SIG,Shift_Disable_SIG,Insert_Bubble_SIG);
     
+    Buff : Falling_register  GENERIC MAP(REG_SIZE => 128) PORT MAP(Clk,Clear_Buffer,'1',Input_Buffer, Output_Buffer);--enable control???
+    --Clear buffer from jmp or rst ????????????
     R0_EN  <='1'  WHEN WB_Address_IN = "0000" AND WB_Signal = '1' 
     ELSE '0';
     R1_EN  <= '1' WHEN WB_Address_IN = "0001" AND WB_Signal = '1' 
@@ -87,5 +141,39 @@ begin
     ELSE  R7_OUT  WHEN instruction(21 DOWNTO 18)="0111";
 
     SignExtend_OUT <= (31 DOWNTO 16 => instruction(15)) & instruction(15 DOWNTO 0);
+
+    Decode_Buffer <=Output_Buffer; 
+
+    Clear_Buffer <= '1' WHEN JMP='1' OR RST='1'
+    ELSE '0';
+
+    Input_Buffer(127 DOWNTO 96) <= RD;
+    Input_Buffer(95 DOWNTO 64) <= RS;
+    Input_Buffer(63 DOWNTO 32) <= SignExtend_OUT;
+    Input_Buffer(31) <=Immediate_SIG;
+    Input_Buffer(30) <=Offset_SIG;
+    Input_Buffer(29) <=Alu_EN_SIG;
+    Input_Buffer(28) <=Mem_Read_SIG;
+    Input_Buffer(27) <=Mem_Write_SIG;
+    Input_Buffer(26) <=WB_SIG;
+    Input_Buffer(25) <=Mem_To_Reg_SIG;
+    Input_Buffer(24) <=Push_SIG;
+    Input_Buffer(23) <=Pop_SIG;
+    Input_Buffer(22) <=Port_in_SIG;
+    Input_Buffer(21) <=Port_out_SIG;
+    Input_Buffer(20) <=No_Change_SIG;
+    Input_Buffer(19) <=Shift_Disable_SIG;
+    Input_Buffer(18) <=Insert_Bubble_SIG;
+    Input_Buffer(17) <=JMP;
+    Input_Buffer(16) <=RST;
+    Input_Buffer(15 DOWNTO 12) <=instruction(25 DOWNTO 22); --rdest_excute address
+    Input_Buffer(11 DOWNTO 0)<= (others=>'0');
+
+    -- RDEST(127 DOWNTO 96) , RSRC(95 DOWNTO 64) ,SIGNEXTEND (63 DOWNTO 32) 
+    --Immediate_SIG(31) , Offset_SIG(30) ,Alu_EN_SIG(29) ,Mem_Read_SIG(28) ,Mem_Write_SIG(27)
+    --WB_SIG(26),Mem_To_Reg_SIG(25),Push_SIG(24),Pop_SIG(23),Port_in_SIG(22) , Port_out_SIG(21)
+    --No_Change_SIG(20),Shift_Disable_SIG(19),Insert_Bubble_SIG(18)
+    --JMP(17), RST(16)
+    
 
 end Dec;
