@@ -4,12 +4,13 @@ USE ieee.numeric_std.ALL;
 
 ENTITY FetchStage IS
     PORT (
+        flush : IN std_logic;
         clock : IN std_logic;
         resetPC : IN std_logic;
         noChange : IN std_logic;
         jmp : IN std_logic;
         jumpAddress : IN std_logic_vector(19 DOWNTO 0);
-        instruction : OUT std_logic_vector(31 DOWNTO 0)
+        stageBuffer : OUT std_logic_vector(31 DOWNTO 0)
     );
 END FetchStage;
 
@@ -18,7 +19,7 @@ ARCHITECTURE rtl OF FetchStage IS
         PORT (
             clock : IN std_logic;
             address : IN std_logic_vector (19 DOWNTO 0);
-            dataIN : IN std_logic_vector (15 DOWNTO 0);
+            dataIN : IN std_logic_vector (31 DOWNTO 0);
             dataOUT : OUT std_logic_vector (31 DOWNTO 0);
             writeEnable : IN std_logic
         );
@@ -33,6 +34,16 @@ ARCHITECTURE rtl OF FetchStage IS
             q : OUT std_logic_vector(N - 1 DOWNTO 0)
         );
     END COMPONENT;
+    COMPONENT Falling_register IS
+        GENERIC (
+            REG_SIZE : integer := 32
+        );
+        PORT (
+            clk, rst, enable : IN std_logic;
+            d : IN std_logic_vector (REG_SIZE - 1 DOWNTO 0);
+            q : OUT std_logic_vector (REG_SIZE - 1 DOWNTO 0)
+        );
+    END COMPONENT;
 
     SIGNAL PCIN : std_logic_vector(19 DOWNTO 0);
     SIGNAL PCOUT : std_logic_vector(19 DOWNTO 0);
@@ -41,13 +52,15 @@ ARCHITECTURE rtl OF FetchStage IS
     SIGNAL memoryData : std_logic_vector(31 DOWNTO 0);
     SIGNAL opCode : std_logic_vector(5 DOWNTO 0);
     SIGNAL incrementByTwo : boolean;
+    SIGNAL bufferIN : std_logic_vector(31 DOWNTO 0);
 BEGIN
     instructionsMemory : RAM PORT MAP(clock => clock, address => address, dataIN => (OTHERS => '0'), dataOUT => memoryData, writeEnable => '0');
     PC : REG GENERIC MAP(N => 20) PORT MAP(clock => clock, clear => '0', enable => PCEnable, d => PCIN, q => PCOUT);
+    fetchBuffer : Falling_register GENERIC MAP(REG_SIZE => 32) PORT MAP(clk => clock, rst => flush, enable => '1', d => bufferIN, q => stageBuffer);
 
     PCEnable <= NOT noChange; -- freeze PC
 
-    instruction <= memoryData;
+    bufferIN <= memoryData;
 
     address <= x"00000" WHEN resetPC = '1'
         ELSE PCOUT;
