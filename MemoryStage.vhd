@@ -9,9 +9,9 @@ ENTITY MemoryStage IS
         dataOUT : OUT std_logic_vector(31 DOWNTO 0);
         address : IN std_logic_vector(31 DOWNTO 0);
         resetSP : IN std_logic;
-        writeAddress: IN std_logic_vector(3 DOWNTO 0);
-        Decode_Buffer:OUT std_logic_vector(35 DOWNTO 0)
-    
+        writeAddress : IN std_logic_vector(3 DOWNTO 0);
+        memoryBuffer : OUT std_logic_vector(35 DOWNTO 0)
+
     );
 END MemoryStage;
 
@@ -35,24 +35,24 @@ ARCHITECTURE rtl OF MemoryStage IS
             q : OUT std_logic_vector(N - 1 DOWNTO 0)
         );
     END COMPONENT;
-    COMPONENT Falling_register 
-    generic (REG_SIZE: integer := 36);
-        port(
-            clk, rst, enable : in std_logic;
-            d : in std_logic_vector (REG_SIZE-1 downto 0);
-            q : out std_logic_vector (REG_SIZE-1 downto 0)
+    COMPONENT Falling_register
+        GENERIC (REG_SIZE : integer := 36);
+        PORT (
+            clk, rst, enable : IN std_logic;
+            d : IN std_logic_vector (REG_SIZE - 1 DOWNTO 0);
+            q : OUT std_logic_vector (REG_SIZE - 1 DOWNTO 0)
         );
     END COMPONENT;
-    SIGNAL Clear_Buffer:std_logic;
-    SIGNAL Input_Buffer :std_logic_vector(35 DOWNTO 0);
-    SIGNAL Output_Buffer :std_logic_vector(35 DOWNTO 0);
+    SIGNAL Clear_Buffer : std_logic;
+    SIGNAL Input_Buffer : std_logic_vector(35 DOWNTO 0);
+    SIGNAL Output_Buffer : std_logic_vector(35 DOWNTO 0);
     SIGNAL memoryForwarding : std_logic_vector(31 DOWNTO 0);
     SIGNAL memoryAddress : std_logic_vector(19 DOWNTO 0);
     SIGNAL writeEnable : std_logic;
     SIGNAL SPIN, SPOUT : std_logic_vector(19 DOWNTO 0);
     SIGNAL SPOUTplus2 : std_logic_vector(19 DOWNTO 0);
     SIGNAL SPOUTminus2 : std_logic_vector(19 DOWNTO 0);
-    SIGNAL memoryDataOut: std_logic_vector(31 DOWNTO 0);
+    SIGNAL memoryDataOut : std_logic_vector(31 DOWNTO 0);
 BEGIN
     memory : RAM PORT MAP(clock => clock, address => memoryAddress, dataIN => dataIN, dataOUT => memoryDataOut, writeEnable => writeEnable);
     SP : REG GENERIC MAP(N => 20) PORT MAP(clock => clock, clear => '0', enable => '1', d => SPIN, q => SPOUT);
@@ -70,17 +70,15 @@ BEGIN
 
     SPOUTplus2 <= std_logic_vector(unsigned(SPOUT) + 2);
     SPOUTminus2 <= std_logic_vector(unsigned(SPOUT) - 2);
-    dataOUT<=memoryDataOut;
+    dataOUT <= memoryDataOut;
 
     Input_Buffer(35 DOWNTO 4) <= memoryForwarding;
-    Input_Buffer(3 DOWNTO 0)<=writeAddress;
+    Input_Buffer(3 DOWNTO 0) <= writeAddress;
 
-    Clear_Buffer <= '1' WHEN RST='1'
-    ELSE '0';
-    memoryForwarding<= memoryDataOut WHEN memoryRead='1'
-    ELSE address;
-    Buff : Falling_register  GENERIC MAP(REG_SIZE => 36) PORT MAP(clock,Clear_Buffer,'1',Input_Buffer, Output_Buffer);--enable control???
-    Decode_Buffer <=Output_Buffer; 
-
-
+    Clear_Buffer <= '1' WHEN RST = '1'
+        ELSE '0';
+    memoryForwarding <= memoryDataOut WHEN memoryRead = '1'
+        ELSE address;
+    Buff : Falling_register GENERIC MAP(REG_SIZE => 36) PORT MAP(clock, Clear_Buffer, '1', Input_Buffer, Output_Buffer);--enable control???
+    memoryBuffer <= Output_Buffer;
 END rtl;

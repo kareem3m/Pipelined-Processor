@@ -6,7 +6,8 @@ ENTITY WriteBackStage IS
     PORT (
         clock : IN std_logic;
         memoryOut : IN std_logic_vector (31 DOWNTO 0);
-        writeAddress : INOUT std_logic_vector (3 DOWNTO 0);
+        writeAddress : IN std_logic_vector (3 DOWNTO 0);
+        writeBackAddress : OUT std_logic_vector (3 DOWNTO 0);
         writeData : OUT std_logic_vector (31 DOWNTO 0)
 
     );
@@ -19,6 +20,7 @@ BEGIN
     BEGIN
         IF rising_edge(clock) THEN
                 writeData <= memoryOut;
+                writeBackAddress <= writeAddress;
         END IF;
     END PROCESS;
 END rtl;
