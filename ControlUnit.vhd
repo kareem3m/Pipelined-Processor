@@ -4,7 +4,7 @@ USE ieee.numeric_std.ALL;
 ENTITY ControlUnit IS
     PORT (
         OpCode:IN std_logic_vector(5 DOWNTO 0);
-        Immediate,Offset,Alu_EN,Mem_Read,Mem_Write,WB,Mem_To_Reg,Push,Pop,Port_in, Port_out:OUT std_logic
+        Immediate,Offset,Alu_EN,Mem_Read,Mem_Write,WB,Mem_To_Reg,Push,Pop,Port_in, Port_out, JMPZ, JMPU:OUT std_logic
 
     );
 END ControlUnit;
@@ -32,5 +32,9 @@ begin
     Port_in <= '1' WHEN OpCode = "001001"
     ELSE '0';
     Port_out <= '1' WHEN OpCode = "001000" --do we need alu enable??????????????
+    ELSE '0';
+    JMPZ <= '1' WHEN OpCode = "110000" 
+    ELSE '0';
+    JMPU <= '1' WHEN OpCode = "110011" 
     ELSE '0';
 end Control;

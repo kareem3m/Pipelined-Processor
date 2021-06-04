@@ -1,13 +1,4 @@
-N:/3rdyear/Pipelined-Processor/FetchStage.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/FetchStage.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity FetchStage
--- Compiling architecture rtl of FetchStage
-
-} {} {}} N:/3rdyear/Pipelined-Processor/Reg.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/Reg.vhd
+N:/3rdyear/Pipelined-Processor/Reg.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/Reg.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -34,15 +25,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Compiling entity RAM
 -- Compiling architecture rtl of RAM
 
-} {} {}} N:/3rdyear/Pipelined-Processor/DecodeStage.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/DecodeStage.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity DecodeStage
--- Compiling architecture Dec of DecodeStage
-
 } {} {}} N:/3rdyear/Pipelined-Processor/Ex_register.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/Ex_register.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
 -- Loading package STANDARD
@@ -58,15 +40,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package std_logic_1164
 -- Compiling entity EX_execute_stage
 -- Compiling architecture EX_execute_stage_arch of EX_execute_stage
-
-} {} {}} N:/3rdyear/Pipelined-Processor/MemoryStage.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/MemoryStage.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity MemoryStage
--- Compiling architecture rtl of MemoryStage
 
 } {} {}} N:/3rdyear/Pipelined-Processor/Ex_ALU.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/Ex_ALU.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
@@ -105,24 +78,6 @@ Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 
 -- Loading package std_logic_1164
 -- Compiling entity Ex_jump_unit
 -- Compiling architecture Ex_jump_unit_arch of Ex_jump_unit
-
-} {} {}} N:/3rdyear/Pipelined-Processor/WriteBackStage.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/WriteBackStage.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity WriteBackStage
--- Compiling architecture rtl of WriteBackStage
-
-} {} {}} N:/3rdyear/Pipelined-Processor/ControlUnit.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/ControlUnit.vhd
-Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity ControlUnit
--- Compiling architecture Control of ControlUnit
 
 } {} {}} N:/3rdyear/Pipelined-Processor/HazardDetectionUnit.vhd {1 {vcom -work work -2002 -explicit -stats=none N:/3rdyear/Pipelined-Processor/HazardDetectionUnit.vhd
 Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
