@@ -70,7 +70,7 @@ BEGIN
     address <= x"00000" WHEN resetPC = '1'
         ELSE PCOUT;
 
-    PCIN <= memoryData(19 DOWNTO 0) WHEN resetPC = '1' -- fetch mem[0]
+    PCIN <= "0000" & memoryData(31 DOWNTO 16) WHEN resetPC = '1' -- fetch mem[0]
         ELSE jumpAddress WHEN jmp = '1'
         ELSE std_logic_vector(unsigned(PCOUT) + 2) WHEN incrementByTwo
         ELSE std_logic_vector(unsigned(PCOUT) + 1);
