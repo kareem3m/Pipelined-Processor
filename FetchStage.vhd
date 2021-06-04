@@ -4,13 +4,16 @@ USE ieee.numeric_std.ALL;
 
 ENTITY FetchStage IS
     PORT (
-        flush : IN std_logic;
+        -- flush : IN std_logic;
         clock : IN std_logic;
         resetPC : IN std_logic;
         noChange : IN std_logic;
         jmp : IN std_logic;
         jumpAddress : IN std_logic_vector(19 DOWNTO 0);
-        stageBuffer : OUT std_logic_vector(31 DOWNTO 0)
+        stageBuffer : OUT std_logic_vector(31 DOWNTO 0);
+        PCInput : OUT std_logic_vector(19 DOWNTO 0);
+        PCOutput : OUT std_logic_vector(19 DOWNTO 0)
+
     );
 END FetchStage;
 
@@ -53,13 +56,15 @@ ARCHITECTURE rtl OF FetchStage IS
     SIGNAL opCode : std_logic_vector(5 DOWNTO 0);
     SIGNAL incrementByTwo : boolean;
     SIGNAL bufferIN : std_logic_vector(31 DOWNTO 0);
+    SIGNAL resetBuffer : std_logic;
 BEGIN
     instructionsMemory : RAM PORT MAP(clock => clock, address => address, dataIN => (OTHERS => '0'), dataOUT => memoryData, writeEnable => '0');
     PC : REG GENERIC MAP(N => 20) PORT MAP(clock => clock, clear => '0', enable => PCEnable, d => PCIN, q => PCOUT);
-    fetchBuffer : Falling_register GENERIC MAP(REG_SIZE => 32) PORT MAP(clk => clock, rst => flush, enable => '1', d => bufferIN, q => stageBuffer);
+    fetchBuffer : Falling_register GENERIC MAP(REG_SIZE => 32) PORT MAP(clk => clock, rst => resetBuffer, enable => PCEnable, d => bufferIN, q => stageBuffer);
 
     PCEnable <= NOT noChange; -- freeze PC
-
+    resetBuffer <= '1' WHEN jmp = '1' OR resetPC = '1'
+        ELSE '0';
     bufferIN <= memoryData;
 
     address <= x"00000" WHEN resetPC = '1'
@@ -69,7 +74,8 @@ BEGIN
         ELSE jumpAddress WHEN jmp = '1'
         ELSE std_logic_vector(unsigned(PCOUT) + 2) WHEN incrementByTwo
         ELSE std_logic_vector(unsigned(PCOUT) + 1);
-
+    PCInput <= PCIN;
+    PCOutput <= PCOUT;
     opcode <= memoryData(31 DOWNTO 26);
 
     incrementByTwo <= true WHEN
