@@ -1,0 +1,8 @@
+mem load -i {D:/3 Current Semester/ARCH/Pipelined-Processor/Assembler/mem.mem} /integration/FetchStagePort/instructionsMemory/ram_block
+force -freeze sim:/integration/RST 1 0
+force -freeze sim:/integration/noChange 0 0
+force -freeze sim:/integration/jmp 0 0
+force -freeze sim:/integration/clock 1 0, 0 {50 ps} -r 100
+run
+force -freeze sim:/integration/RST 0 0
+run 1000
