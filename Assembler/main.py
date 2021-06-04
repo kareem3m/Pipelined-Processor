@@ -86,7 +86,10 @@ def HandleComments(txt):
             LinesNoComments.append(line)
     print(LinesNoComments)
     return LinesNoComments
-file = open("output.txt", "w")
+file = open("output.mem", "w")
+file.write(("// memory data file (do not edit the following line - required for mem load use)\n"
+            "// instance=/ram/ram\n"
+            "// format=mti addressradix=h dataradix=b version=1.0 wordsperline=1\n")) 
 instructions=[]
 
 def Main(Lines):   
@@ -119,8 +122,8 @@ def Main(Lines):
         elif re.match('^[-+]?[0-9]+$', i[0]):
             instr[address] = bin(int(i[0]))[2:].zfill(16)+'\n'
         address += 1
-    for line in instr:
-        file.write(line) 
+    for addr, line in enumerate(instr):
+        file.write(str(addr) + ": " + str(line)) 
         
 
           
