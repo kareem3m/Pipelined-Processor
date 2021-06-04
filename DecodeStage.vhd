@@ -193,10 +193,9 @@ begin
     Input_Buffer(16) <=JMPZ_SIG;
     Input_Buffer(15) <=JMPU_SIG;
     Input_Buffer(14) <=RST;
-    Input_Buffer(13 DOWNTO 9) <= OPcode; -- opcode
-    Input_Buffer(8 DOWNTO 5) <=instruction(25 DOWNTO 22); --R DEST
-    Input_Buffer(4 DOWNTO 1) <=instruction(21 DOWNTO 18); --R SRC
-    Input_Buffer(0)<= '0';
+    Input_Buffer(13 DOWNTO 8) <= OPcode; -- opcode
+    Input_Buffer(7 DOWNTO 4) <=instruction(25 DOWNTO 22); --R DEST
+    Input_Buffer(3 DOWNTO 0) <=instruction(21 DOWNTO 18); --R SRC
 
     -- RDEST(127 DOWNTO 96) , RSRC(95 DOWNTO 64) ,SIGNEXTEND (63 DOWNTO 32) 
     --Immediate_SIG(31) , Offset_SIG(30) ,Alu_EN_SIG(29) ,Mem_Read_SIG(28) ,Mem_Write_SIG(27)

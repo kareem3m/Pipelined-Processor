@@ -41,7 +41,7 @@ ARCHITECTURE rtl OF Integration IS
             address : IN std_logic_vector(31 DOWNTO 0);
             resetSP : IN std_logic;
             writeAddress : IN std_logic_vector(3 DOWNTO 0);
-            memoryBuffer : OUT std_logic_vector(127 DOWNTO 0)
+            memoryBuffer : OUT std_logic_vector(35 DOWNTO 0)
 
         );
     END COMPONENT;
@@ -73,24 +73,24 @@ ARCHITECTURE rtl OF Integration IS
     SIGNAL memoryAddress : std_logic_vector(31 DOWNTO 0);
     SIGNAL resetSP : std_logic;
     SIGNAL writeAddress : std_logic_vector(3 DOWNTO 0);
-    SIGNAL memoryBuffer : std_logic_vector(127 DOWNTO 0);
+    SIGNAL memoryBuffer : std_logic_vector(35 DOWNTO 0);
 
 
     --- WRITE BACK STAGE ---
     SIGNAL writeBackData : std_logic_vector(31 DOWNTO 0);
     SIGNAL writeBackAddress : std_logic_vector(3 DOWNTO 0);
 BEGIN
-    FetchStagePort : FetchStage
-    PORT MAP(
-        clock => clock,
-        resetPC => RST,
-        noChange => noChange,
-        jmp => jmp,
-        jumpAddress => jumpAddress,
-        stageBuffer => IR,
-        PCInput => PCIN,
-        PCOutput => PCOUT
-    );
+    -- FetchStagePort : FetchStage
+    -- PORT MAP(
+    --     clock => clock,
+    --     resetPC => RST,
+    --     noChange => noChange,
+    --     jmp => jmp,
+    --     jumpAddress => jumpAddress,
+    --     stageBuffer => IR,
+    --     PCInput => PCIN,
+    --     PCOutput => PCOUT
+    -- );
 
     MemoryStagePort : MemoryStage PORT MAP(
         clock => clock,
