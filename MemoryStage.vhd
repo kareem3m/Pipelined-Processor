@@ -10,7 +10,8 @@ ENTITY MemoryStage IS
         address : IN std_logic_vector(31 DOWNTO 0);
         resetSP : IN std_logic;
         writeAddress : IN std_logic_vector(3 DOWNTO 0);
-        memoryBuffer : OUT std_logic_vector(35 DOWNTO 0)
+        memoryBuffer : OUT std_logic_vector(36 DOWNTO 0);
+        writeBackSignal : IN std_logic
 
     );
 END MemoryStage;
@@ -36,7 +37,7 @@ ARCHITECTURE rtl OF MemoryStage IS
         );
     END COMPONENT;
     COMPONENT Falling_register
-        GENERIC (REG_SIZE : integer := 36);
+        GENERIC (REG_SIZE : integer := 37);
         PORT (
             clk, rst, enable : IN std_logic;
             d : IN std_logic_vector (REG_SIZE - 1 DOWNTO 0);
@@ -44,8 +45,8 @@ ARCHITECTURE rtl OF MemoryStage IS
         );
     END COMPONENT;
     SIGNAL Clear_Buffer : std_logic;
-    SIGNAL Input_Buffer : std_logic_vector(35 DOWNTO 0);
-    SIGNAL Output_Buffer : std_logic_vector(35 DOWNTO 0);
+    SIGNAL Input_Buffer : std_logic_vector(36 DOWNTO 0);
+    SIGNAL Output_Buffer : std_logic_vector(36 DOWNTO 0);
     SIGNAL memoryForwarding : std_logic_vector(31 DOWNTO 0);
     SIGNAL memoryAddress : std_logic_vector(19 DOWNTO 0);
     SIGNAL writeEnable : std_logic;
@@ -72,6 +73,7 @@ BEGIN
     SPOUTminus2 <= std_logic_vector(unsigned(SPOUT) - 2);
     dataOUT <= memoryDataOut;
 
+    Input_Buffer(36) <= writeBackSignal;
     Input_Buffer(35 DOWNTO 4) <= memoryForwarding;
     Input_Buffer(3 DOWNTO 0) <= writeAddress;
 
