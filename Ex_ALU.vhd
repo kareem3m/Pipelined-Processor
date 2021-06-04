@@ -11,7 +11,7 @@ entity Ex_ALU is
         operation : in std_logic_vector (4 downto 0);
         cin: in std_logic;
         result: out std_logic_vector (ALU_SIZE-1 downto 0);
-        flags: out std_logic_vector (ALU_SIZE-1 downto 0)
+        flags: out std_logic_vector (2 downto 0)
     );
 end Ex_ALU;
 

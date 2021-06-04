@@ -2,43 +2,55 @@ Library ieee;
 use ieee.std_logic_1164.all;
 
 entity EX_execute_stage is
-    generic (ALU_flags_SIZE : integer := 32);
-    port( 
-        -- muxes
-        RdstVal   : in std_logic_vector (ALU_flags_SIZE-1 downto 0);
-        RsrcVal   : in std_logic_vector (ALU_flags_SIZE-1 downto 0);
-        Offset: in  std_logic_vector (ALU_flags_SIZE-1 downto 0);
-        ImmVal: in  std_logic_vector (ALU_flags_SIZE-1 downto 0);
-        AluForwarding: in  std_logic_vector (ALU_flags_SIZE-1 downto 0);
-        MemForwarding: in  std_logic_vector (ALU_flags_SIZE-1 downto 0);
-        InPOrt: in  std_logic_vector (ALU_flags_SIZE-1 downto 0);
-        offsetSignal: in std_logic;
+    generic (EX_STAGE_SIZE : integer := 32);
+    port(
+        -- Control Signals 
+        i_control: in std_logic_vector (17 downto 0);
+        
+        -- Muxes
+        i_RdstVal   : in std_logic_vector (EX_STAGE_SIZE-1 downto 0);
+        i_RsrcVal   : in std_logic_vector (EX_STAGE_SIZE-1 downto 0);
+        i_Offset_ImmVal: in  std_logic_vector (EX_STAGE_SIZE-1 downto 0);
+        i_AluForwarding: in  std_logic_vector (EX_STAGE_SIZE-1 downto 0);
+        i_MemForwarding: in  std_logic_vector (EX_STAGE_SIZE-1 downto 0);
+        i_InPort: in  std_logic_vector (EX_STAGE_SIZE-1 downto 0);
+        -- offsetSignal: in std_logic; -- i_control(16)
+        o_RdstValStore: out std_logic_vector (EX_STAGE_SIZE-1 downto 0); -- for store operation
 
-        -- forwarding unit
-        RdstAddress: in std_logic_vector (3 downto 0);
-        RsrcAddress: in std_logic_vector (3 downto 0);
-        RdestEM: in std_logic_vector (3 downto 0);
-        RdestMW: in std_logic_vector (3 downto 0);
-        inPortSignal: in std_logic;
-        immSignal: in std_logic;
-        WB_EM_Signal: in std_logic;
-        WB_MW_Signal: in std_logic;
+        -- Forwarding Unit
+        -- RdstAddress: in std_logic_vector (3 downto 0); --i_opDstSrc(7 downto 4)
+        -- RsrcAddress: in std_logic_vector (3 downto 0); --i_opDstSrc(3 down to 0)
+        i_RdestEM: in std_logic_vector (3 downto 0);
+        i_RdestMW: in std_logic_vector (3 downto 0);
+        -- inPortSignal: in std_logic; --i_control(8)
+        -- immSignal: in std_logic; --i_control(17)
+        i_WB_EM_Signal: in std_logic;
+        i_WB_MW_Signal: in std_logic;
 
-        -- output port:
-        outputPortSignal: std_logic;
+        -- Output Port:
+        -- outputPortSignal: in std_logic; --i_control(7)
+        o_outputPort: out std_logic_vector(EX_STAGE_SIZE-1 downto 0);
 
-        -- alu
-        operation : in std_logic_vector (4 downto 0);
+        -- Alu
+        -- operation: in std_logic_vector(4 downto 0);
+        i_opDstSrc: in std_logic_vector (13 downto 0); --decode
 
-        --registers
-        clk: in std_logic;
+        -- Registers
+        i_clk: in std_logic;
+        i_rst: in std_logic; --global
 
-        -- alu out
-        result: out std_logic_vector (ALU_flags_SIZE-1 downto 0);
+        -- Jump Unit
+        -- uncondtionalJmp: in std_logic; --i_control(1)
+        -- jmpIfZero: in std_logic; --i_control(2)
 
-        -- jump unit
-        uncondtionalJmp, jmpIfZero: in std_logic;
-        jmp: out std_logic
+        -- Unit Output
+        o_aluResult: out std_logic_vector (EX_STAGE_SIZE-1 downto 0);
+        o_jmp: out std_logic;
+
+        -- Buffer
+        o_buffRdstAddress: out std_logic_vector (3 downto 0);
+        o_buffControl: out std_logic_vector (17 downto 0)
+
     );
 end EX_execute_stage;
 
@@ -54,18 +66,28 @@ component Ex_ALU is
         cin: in std_logic;
 
         result: out std_logic_vector (ALU_SIZE-1 downto 0);
-        flags: out std_logic_vector (ALU_SIZE-1 downto 0)
+        flags: out std_logic_vector (2 downto 0)
     );
 end component;
 
 --Register
-component Ex_register is
+component Falling_register is
     generic (REG_SIZE: integer := 32);
     port(
         clk, rst, enable : in std_logic;
-        d : in std_logic_vector (31 downto 0);
+        d : in std_logic_vector (REG_SIZE-1 downto 0);
+        q : out std_logic_vector (REG_SIZE-1 downto 0)
+    );
+end component;
 
-        q : out std_logic_vector (31 downto 0)
+component Reg is
+    generic (
+        N : integer
+    );
+    port (
+        clock, clear, enable : in std_logic;
+        d : IN std_logic_vector(N - 1 downto 0);
+        q : OUT std_logic_vector(N - 1 downto 0)
     );
 end component;
 
@@ -80,7 +102,7 @@ component Ex_jump_unit is
 end component;
 
 --Forwaring Unit:
-component ForwardingUnit is
+component Ex_forwarding_unit is
     port (
         RdestAddress : in std_logic_vector (3 downto 0);
         RsrcAddress : in std_logic_vector (3 downto 0);
@@ -117,9 +139,9 @@ end component;
 -------------------Signals--------------------
 --ALU, FlagReg, ResultReg
 signal s_cin: std_logic;
-signal s_aluFlagsOut: std_logic_vector(ALU_flags_SIZE-1 downto 0); 
-signal s_flagRegOut: std_logic_vector(ALU_flags_SIZE-1 downto 0);
-signal s_result: std_logic_vector(ALU_flags_SIZE-1 downto 0);
+signal s_aluFlagsOut: std_logic_vector(2 downto 0); 
+signal s_flagRegOut: std_logic_vector(2 downto 0);
+signal s_result: std_logic_vector(EX_STAGE_SIZE-1 downto 0);
 
 --Jump Unit:
 signal s_zeroFlag: std_logic;
@@ -129,35 +151,37 @@ signal s_dstSel: std_logic_vector(1 downto 0);
 signal s_srcSel: std_logic_vector(1 downto 0);
 
 --Muxes:
-signal s_dstMuxOut: std_logic_vector(ALU_flags_SIZE-1 downto 0);
-signal s_op1: std_logic_vector(ALU_flags_SIZE-1 downto 0);
-signal s_op2: std_logic_vector(ALU_flags_SIZE-1 downto 0);
-
---Output Port:
-signal s_outputPort: std_logic_vector(ALU_flags_SIZE-1 downto 0);
+signal s_dstMuxOut: std_logic_vector(EX_STAGE_SIZE-1 downto 0);
+signal s_op1: std_logic_vector(EX_STAGE_SIZE-1 downto 0);
+signal s_op2: std_logic_vector(EX_STAGE_SIZE-1 downto 0);
 
 -------------------Arch---------------------    
 begin
 
     --Forwarding Unit:
-    fu: ForwardingUnit port map (RdstAddress, RsrcAddress, RdestEM, RdestMW, inPortSignal, immSignal, WB_EM_Signal, WB_MW_Signal, s_dstSel, s_srcSel);
+    l_fu: Ex_forwarding_unit port map (i_opDstSrc(7 downto 4), i_opDstSrc(3 downto 0), i_RdestEM, i_RdestMW, i_control(8), i_control(17), i_WB_EM_Signal, i_WB_MW_Signal, s_dstSel, s_srcSel);
 
     --Muxes:
-    dstMux: Ex_mux4x4 port map (RdstVal, AluForwarding, MemForwarding, InPOrt, s_dstSel, s_dstMuxOut);
-    offMux: Ex_mux2x2 port map (s_dstMuxOut, Offset, offsetSignal, s_op1);
-    srcMux: Ex_mux4x4 port map (RsrcVal, AluForwarding, MemForwarding, ImmVal, s_srcSel, s_op2);
+    l_dstMux: Ex_mux4x4 port map (i_RdstVal, i_AluForwarding, i_MemForwarding, i_InPort, s_dstSel, s_dstMuxOut);
+    l_offMux: Ex_mux2x2 port map (s_dstMuxOut, i_Offset_ImmVal, i_control(16), s_op1);
+    l_srcMux: Ex_mux4x4 port map (i_RsrcVal, i_AluForwarding, i_MemForwarding, i_Offset_ImmVal, s_srcSel, s_op2);
 
     --Alu, flags and result:
-    alu: Ex_ALU port map (s_op1, s_op2, operation, s_cin, s_result, s_aluFlagsOut);
-    flagReg: Ex_register port map (clk, '0', '1', s_aluFlagsOut, s_flagRegOut);
+    l_alu: Ex_ALU port map (s_op1, s_op2, i_opDstSrc(12 downto 8), s_cin, s_result, s_aluFlagsOut);
+    l_flagReg: Reg generic map(3) port map (i_clk, i_rst, '1', s_aluFlagsOut, s_flagRegOut);
     s_cin <= s_flagRegOut(0);
-    resultReg: Ex_register port map (clk, '0', '1', s_result, result);
+    l_resultReg: Falling_register generic map(EX_STAGE_SIZE) port map (i_clk, i_rst, '1', s_result, o_aluResult);
 
     --Jump unit:
     s_zeroFlag <= s_flagRegOut(1);
-    ju: Ex_jump_unit port map (uncondtionalJmp, jmpIfZero, s_zeroFlag, jmp);
+    l_ju: Ex_jump_unit port map (i_control(1), i_control(2), s_zeroFlag, o_jmp);
 
     --Output port:
-    outputPortReg: Ex_register port map (clk, '0', outputPortSignal, s_dstMuxOut, s_outputPort);
+    l_outputPortReg: Reg generic map(EX_STAGE_SIZE) port map (i_clk, i_rst, i_control(7), s_dstMuxOut, o_outputPort);
+
+    -- Buffer:
+    l_buffRdst: Falling_register generic map(4) port map (i_clk, i_rst, '1', i_opDstSrc(7 downto 4), o_buffRdstAddress);
+    l_buffControl: Falling_register generic map(18) port map (i_clk, i_rst, '1', i_control, o_buffControl);
+    l_storeReg: Falling_register generic map(EX_STAGE_SIZE) port map (i_clk, i_rst, '1', s_dstMuxOut, o_RdstValStore);
 
 end EX_execute_stage_arch;

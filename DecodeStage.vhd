@@ -198,10 +198,10 @@ begin
     Input_Buffer(3 DOWNTO 0) <=instruction(21 DOWNTO 18); --R SRC
 
     -- RDEST(127 DOWNTO 96) , RSRC(95 DOWNTO 64) ,SIGNEXTEND (63 DOWNTO 32) 
-    --Immediate_SIG(31) , Offset_SIG(30) ,Alu_EN_SIG(29) ,Mem_Read_SIG(28) ,Mem_Write_SIG(27)
-    --WB_SIG(26),Mem_To_Reg_SIG(25),Push_SIG(24),Pop_SIG(23),Port_in_SIG(22) , Port_out_SIG(21)
-    --No_Change_SIG(20),Shift_Disable_SIG(19),Insert_Bubble_SIG(18)
-    --JMP(17),  JMPZ_SIG(16), JMPU_SIG(15), RST(14)
+    --Immediate_SIG(17) , Offset_SIG(16) ,Alu_EN_SIG(15) ,Mem_Read_SIG(14) ,Mem_Write_SIG(13)
+    --WB_SIG(12),Mem_To_Reg_SIG(11),Push_SIG(10),Pop_SIG(9),Port_in_SIG(8) , Port_out_SIG(7)
+    --No_Change_SIG(6),Shift_Disable_SIG(5),Insert_Bubble_SIG(4)
+    --JMP(3),  JMPZ_SIG(2), JMPU_SIG(1), RST(0)
     
 
 end Dec;
