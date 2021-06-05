@@ -18,11 +18,11 @@ END WriteBackStage;
 ARCHITECTURE rtl OF WriteBackStage IS
 
 BEGIN
-    PROCESS (clock)
-    BEGIN
+    -- PROCESS (clock)
+    -- BEGIN
             writeData <= memoryOut;
             writeBackAddress <= writeAddress;
             writeBackEnable <= writeEnable;
             
-    END PROCESS;
+    -- END PROCESS;
 END rtl;

@@ -15,7 +15,7 @@ entity EX_execute_stage is
         i_MemForwarding: in  std_logic_vector (EX_STAGE_SIZE-1 downto 0);
         i_InPort: in  std_logic_vector (EX_STAGE_SIZE-1 downto 0);
         -- offsetSignal: in std_logic; -- i_control(16)
-        o_RdstValStore: out std_logic_vector (EX_STAGE_SIZE-1 downto 0); -- for store operation
+        o_RdstValStore: out std_logic_vector (EX_STAGE_SIZE-1 downto 0); -- for store operation -- async for fetch?
 
         -- Forwarding Unit
         -- RdstAddress: in std_logic_vector (3 downto 0); --i_opDstSrc(7 downto 4)
