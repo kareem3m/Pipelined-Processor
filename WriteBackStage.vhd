@@ -8,7 +8,9 @@ ENTITY WriteBackStage IS
         memoryOut : IN std_logic_vector (31 DOWNTO 0);
         writeAddress : IN std_logic_vector (3 DOWNTO 0);
         writeBackAddress : OUT std_logic_vector (3 DOWNTO 0);
-        writeData : OUT std_logic_vector (31 DOWNTO 0)
+        writeData : OUT std_logic_vector (31 DOWNTO 0);
+        writeBackEnable : OUT std_logic;
+        writeEnable : IN std_logic
 
     );
 END WriteBackStage;
@@ -21,6 +23,7 @@ BEGIN
         IF rising_edge(clock) THEN
                 writeData <= memoryOut;
                 writeBackAddress <= writeAddress;
+                writeBackEnable <= writeEnable;
         END IF;
     END PROCESS;
 END rtl;

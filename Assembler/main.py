@@ -89,7 +89,7 @@ def HandleComments(txt):
 file = open("output.mem", "w")
 file.write(("// memory data file (do not edit the following line - required for mem load use)\n"
             "// instance=/ram/ram\n"
-            "// format=mti addressradix=h dataradix=b version=1.0 wordsperline=1\n")) 
+            "// format=mti addressradix=h dataradix=b version=1.0 wordsperline=1 noaddress\n")) 
 instructions=[]
 
 def Main(Lines):   
@@ -115,15 +115,17 @@ def Main(Lines):
             instr[address] = TwoOperands[i[0]]+Registers[i[1]]+Registers[i[2]]+"00"+'\n'
         elif i[0] in Offset:
             instr[address] = Offset[i[0]]+Registers[i[1]]+Registers[i[3]]+"00"+'\n'
+            address = address+1
             instr[address] = bin(int(i[2],16))[2:].zfill(16)+'\n'
         elif i[0] in Immediate:
             instr[address] = Immediate[i[0]]+Registers[i[1]]+"111100"+'\n'
+            address=address+1
             instr[address] = bin(int(i[2],16))[2:].zfill(16)+'\n'
         elif re.match('^[-+]?[0-9]+$', i[0]):
             instr[address] = bin(int(i[0]))[2:].zfill(16)+'\n'
         address += 1
-    for addr, line in enumerate(instr):
-        file.write(str(addr) + ": " + str(line)) 
+    for _, line in enumerate(instr):
+        file.write(str(line)) 
         
 
           
