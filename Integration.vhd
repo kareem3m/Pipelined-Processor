@@ -30,7 +30,7 @@ ARCHITECTURE rtl OF Integration IS
         PORT (
             instruction, WB_Data_IN : IN std_logic_vector(31 DOWNTO 0);
             WB_Address_IN, RDest_Ex : IN std_logic_vector(3 DOWNTO 0);
-            WB_Signal, Clk, Mem_Read_Ex, JMP, RST : IN std_logic;
+            WB_Signal, Clk, Mem_Read_Ex, JMP, RST_SIG : IN std_logic;
             RD_Buffer : OUT std_logic_vector(31 DOWNTO 0);
             RS_Buffer : OUT std_logic_vector(31 DOWNTO 0);
             SGIN_Buffer : OUT std_logic_vector(31 DOWNTO 0);
@@ -175,7 +175,7 @@ BEGIN
         Mem_Read_Ex => control_Buffer(14),
         RDest_Ex => Address_Buffer(7 DOWNTO 4),
         JMP => jmp,
-        RST => RST,
+        RST_SIG => RST,
         RD_Buffer => RD_Buffer,
         RS_Buffer => RS_Buffer,
         SGIN_Buffer => SGIN_Buffer,

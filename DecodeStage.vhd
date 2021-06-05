@@ -6,7 +6,7 @@ ENTITY DecodeStage IS
 
         instruction,WB_Data_IN : IN std_logic_vector(31 DOWNTO 0);
         WB_Address_IN,RDest_Ex: IN  std_logic_vector(3 DOWNTO 0);
-        WB_Signal,Clk,Mem_Read_Ex,JMP,RST:IN std_logic ;  
+        WB_Signal,Clk,Mem_Read_Ex,JMP,RST_SIG:IN std_logic ;  
         RD_Buffer:OUT std_logic_vector(31 DOWNTO 0);
         RS_Buffer:OUT std_logic_vector(31 DOWNTO 0);
         SGIN_Buffer:OUT std_logic_vector(31 DOWNTO 0);
@@ -102,14 +102,14 @@ SIGNAL SignExtend_OUT :std_logic_vector (31 DOWNTO 0);
 SIGNAL OPcode :std_logic_vector (5 DOWNTO 0);
 begin
     
-    R0 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R0_EN,WB_Data_IN,R0_OUT);
-    R1 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R1_EN,WB_Data_IN,R1_OUT);
-    R2 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R2_EN,WB_Data_IN,R2_OUT);
-    R3 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R3_EN,WB_Data_IN,R3_OUT);
-    R4 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R4_EN,WB_Data_IN,R4_OUT);
-    R5 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R5_EN,WB_Data_IN,R5_OUT);
-    R6 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R6_EN,WB_Data_IN,R6_OUT);
-    R7 : REG GENERIC MAP(N => 32) PORT MAP(Clk,'0',R7_EN,WB_Data_IN,R7_OUT);
+    R0 : REG GENERIC MAP(N => 32) PORT MAP(Clk,RST_SIG,R0_EN,WB_Data_IN,R0_OUT);
+    R1 : REG GENERIC MAP(N => 32) PORT MAP(Clk,RST_SIG,R1_EN,WB_Data_IN,R1_OUT);
+    R2 : REG GENERIC MAP(N => 32) PORT MAP(Clk,RST_SIG,R2_EN,WB_Data_IN,R2_OUT);
+    R3 : REG GENERIC MAP(N => 32) PORT MAP(Clk,RST_SIG,R3_EN,WB_Data_IN,R3_OUT);
+    R4 : REG GENERIC MAP(N => 32) PORT MAP(Clk,RST_SIG,R4_EN,WB_Data_IN,R4_OUT);
+    R5 : REG GENERIC MAP(N => 32) PORT MAP(Clk,RST_SIG,R5_EN,WB_Data_IN,R5_OUT);
+    R6 : REG GENERIC MAP(N => 32) PORT MAP(Clk,RST_SIG,R6_EN,WB_Data_IN,R6_OUT);
+    R7 : REG GENERIC MAP(N => 32) PORT MAP(Clk,RST_SIG,R7_EN,WB_Data_IN,R7_OUT);
 
     CU : ControlUnit PORT MAP(instruction(31 DOWNTO 26),Immediate_SIG,Offset_SIG,Alu_EN_SIG,Mem_Read_SIG,Mem_Write_SIG,WB_SIG,Mem_To_Reg_SIG,Push_SIG,Pop_SIG,Port_in_SIG, Port_out_SIG, JMPZ_SIG, JMPU_SIG);  
     HU : HazardDetectionUnit PORT MAP(instruction(21 DOWNTO 18),instruction(25 DOWNTO 22),RDest_Ex,Mem_Read_Ex,No_Change_SIG,Shift_Disable_SIG,Insert_Bubble_SIG);
@@ -164,7 +164,7 @@ begin
     SGIN_Buffer <= Sign_Buffer_SIG;
     control_Buffer <= Control_Buffer_SIG;
     Address_Buffer <= Address_Buffer_SIG;
-    Clear_Buffer <= '1' WHEN JMP='1' OR RST='1'
+    Clear_Buffer <= '1' WHEN JMP='1' OR RST_SIG='1'
     ELSE '0';
 
     OPcode <= "000000" WHEN instruction(31 DOWNTO 26) = "110000" OR instruction(31 DOWNTO 26) = "110011" OR instruction(31 DOWNTO 26) = "100000" OR instruction(31 DOWNTO 26) = "100001"
@@ -192,7 +192,7 @@ begin
     Input_Buffer(17) <=JMP;
     Input_Buffer(16) <=JMPZ_SIG;
     Input_Buffer(15) <=JMPU_SIG;
-    Input_Buffer(14) <=RST;
+    Input_Buffer(14) <=RST_SIG;
     Input_Buffer(13 DOWNTO 8) <= OPcode; -- opcode
     Input_Buffer(7 DOWNTO 4) <=instruction(25 DOWNTO 22); --R DEST
     Input_Buffer(3 DOWNTO 0) <=instruction(21 DOWNTO 18); --R SRC
@@ -201,7 +201,7 @@ begin
     --Immediate_SIG(17) , Offset_SIG(16) ,Alu_EN_SIG(15) ,Mem_Read_SIG(14) ,Mem_Write_SIG(13)
     --WB_SIG(12),Mem_To_Reg_SIG(11),Push_SIG(10),Pop_SIG(9),Port_in_SIG(8) , Port_out_SIG(7)
     --No_Change_SIG(6),Shift_Disable_SIG(5),Insert_Bubble_SIG(4)
-    --JMP(3),  JMPZ_SIG(2), JMPU_SIG(1), RST(0)
+    --JMP(3),  JMPZ_SIG(2), JMPU_SIG(1), RST_SIG(0)
     
 
 end Dec;

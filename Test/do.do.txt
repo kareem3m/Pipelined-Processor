@@ -53,9 +53,8 @@ sim:/integration/memoryBuffer \
 sim:/integration/writeBackData \
 sim:/integration/writeBackAddress \
 sim:/integration/writeBackSignal
-mem load -i N:/3rdyear/Pipelined-Processor/Assembler/output.mem /integration/FetchStagePort/instructionsMemory/ram_block
+mem load -i {E:/third year/semester 2/Arch/model_Project/Pipelined-Processor/Assembler/output.mem} /integration/FetchStagePort/instructionsMemory/ram_block
 add wave -position insertpoint  \
-sim:/integration/clock \
 sim:/integration/RST \
 sim:/integration/OutPort \
 sim:/integration/InPort \
@@ -92,7 +91,7 @@ force -freeze sim:/integration/RST 1 0
 force -freeze sim:/integration/noChange 0 0
 force -freeze sim:/integration/jmp 0 0
 force -freeze sim:/integration/InPort 32'd4 0
-force -freeze sim:/integration/clock 1 0, 0 {50 ns} -r 100
+force -freeze sim:/integration/clock 1 0, 0 {50 ps} -r 100
 run
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ns  Iteration: 0  Instance: /integration/FetchStagePort/instructionsMemory
