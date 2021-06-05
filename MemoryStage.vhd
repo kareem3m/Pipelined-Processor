@@ -81,6 +81,6 @@ BEGIN
         ELSE '0';
     memoryForwarding <= memoryDataOut WHEN memoryRead = '1'
         ELSE address;
-    Buff : Falling_register GENERIC MAP(REG_SIZE => 36) PORT MAP(clock, Clear_Buffer, '1', Input_Buffer, Output_Buffer);--enable control???
+    Buff : Falling_register GENERIC MAP(REG_SIZE => 37) PORT MAP(clock, Clear_Buffer, '1', Input_Buffer, Output_Buffer);--enable control???
     memoryBuffer <= Output_Buffer;
 END rtl;

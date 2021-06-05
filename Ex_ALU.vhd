@@ -44,27 +44,27 @@ begin
     else std_logic_vector(to_signed(to_integer(signed(op1)) - 1, ALU_SIZE)) when operation = "00110" -- DEC
     else std_logic_vector(to_signed(to_integer(signed(not op1)) + 1, ALU_SIZE)) when operation = "00111" -- Neg
     else op1 when operation = "01001" -- IN
-    else op2 when operation = "01010" -- MOV
-    else sumSignal when operation = "01011" -- ADD
-    else subSignal when operation = "01100" -- SUB
-    else (op2 and op1) when operation = "01101" -- AND
-    else (op2 or op1) when operation = "01110" -- OR
-    else std_logic_vector(shift_left(unsigned(op1), to_integer(unsigned(op2)))) when operation = "10000" -- SHL
-    else std_logic_vector(shift_right(unsigned(op1), to_integer(unsigned(op2)))) when operation = "10001" -- SHR
-    else (op1(ALU_SIZE-2 downto 0) & cin) when operation = "10010" -- RLC
-    else (cin & op1(ALU_SIZE-1 downto 1)) when operation = "10011" -- RRC
+    else op2 when operation = "10000" -- MOV
+    else sumSignal when operation = "10001" -- ADD
+    else subSignal when operation = "10010" -- SUB
+    else (op2 and op1) when operation = "10011" -- AND
+    else (op2 or op1) when operation = "10100" -- OR
+    else std_logic_vector(shift_left(unsigned(op1), to_integer(unsigned(op2)))) when operation = "10110" -- SHL
+    else std_logic_vector(shift_right(unsigned(op1), to_integer(unsigned(op2)))) when operation = "10111" -- SHR
+    else (op1(ALU_SIZE-2 downto 0) & cin) when operation = "11000" -- RLC
+    else (cin & op1(ALU_SIZE-1 downto 1)) when operation = "11001" -- RRC
     else resultSignal;
     result <= resultSignal;
 
     flags(0) <= --carry flag
     '1' when operation = "00001" -- SETC
     else '0'  when operation = "00010" -- CLRC
-    else sumCarrySignal                             when operation = "01011"  -- ADD
-    else subCarrySignal                             when operation = "01100"  -- SUB
-    else op1(ALU_SIZE-to_integer(unsigned(op2)))    when operation = "10000"  -- SHL
-    else op1(to_integer(unsigned(op2)-1))           when operation = "10001"  -- SHL
-    else op1(ALU_SIZE-1)                            when operation = "10010"  -- RLC
-    else op1(0)                                     when operation = "10011"; -- RRC
+    else sumCarrySignal                             when operation = "10001"  -- ADD
+    else subCarrySignal                             when operation = "10010"  -- SUB
+    else op1(ALU_SIZE-to_integer(unsigned(op2(4 downto 0))+1)-1)    when operation = "10110"  -- SHL
+    else op1(to_integer(unsigned(op2(4 downto 0))-1))           when operation = "10111"  -- SHR
+    else op1(ALU_SIZE-1)                            when operation = "11000"  -- RLC
+    else op1(0)                                     when operation = "11001"; -- RRC
     flags(1) <= nor_reduce(resultSignal); --zero flag
     flags(2) <= resultSignal(ALU_SIZE-1); --negative flag
 

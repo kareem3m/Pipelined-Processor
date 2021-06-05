@@ -20,10 +20,9 @@ ARCHITECTURE rtl OF WriteBackStage IS
 BEGIN
     PROCESS (clock)
     BEGIN
-        IF rising_edge(clock) THEN
-                writeData <= memoryOut;
-                writeBackAddress <= writeAddress;
-                writeBackEnable <= writeEnable;
-        END IF;
+            writeData <= memoryOut;
+            writeBackAddress <= writeAddress;
+            writeBackEnable <= writeEnable;
+            
     END PROCESS;
 END rtl;

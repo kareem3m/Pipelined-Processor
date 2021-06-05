@@ -99,7 +99,8 @@ ARCHITECTURE rtl OF Integration IS
             address : IN std_logic_vector(31 DOWNTO 0);
             resetSP : IN std_logic;
             writeAddress : IN std_logic_vector(3 DOWNTO 0);
-            memoryBuffer : OUT std_logic_vector(36 DOWNTO 0)
+            memoryBuffer : OUT std_logic_vector(36 DOWNTO 0);
+            writeBackSignal : IN std_logic
 
         );
     END COMPONENT;
@@ -134,6 +135,8 @@ ARCHITECTURE rtl OF Integration IS
 
     --- Execute ---
     SIGNAL aluResult : std_logic_vector(31 DOWNTO 0);
+    SIGNAL control_Buffer_Execute : std_logic_vector(17 DOWNTO 0);
+
     --- MEMORY STAGE ---
     SIGNAL memoryRead : std_logic;
     SIGNAL memoryWrite : std_logic;
@@ -190,7 +193,7 @@ BEGIN
         i_AluForwarding => aluResult,
         i_MemForwarding => memoryBuffer(35 DOWNTO 4),
         i_InPort => InPort,
-        
+
         o_RdstValStore => memoryIN,
         i_RdestEM => writeAddress,
         i_RdestMW => memoryBuffer(3 DOWNTO 0),
@@ -203,32 +206,34 @@ BEGIN
         o_aluResult => aluResult,
         o_jmp => jmp,
         o_buffRdstAddress => writeAddress,
-        o_buffControl => control_Buffer 
+        o_buffControl => control_Buffer_Execute 
 
     );
-    -- MemoryStagePort : MemoryStage PORT MAP(
-    --     clock => clock,
-    --     RST => RST,
-    --     memoryRead => control_Buffer(14),
-    --     memoryWrite => control_Buffer(13),
-    --     pop => control_Buffer(9),
-    --     push => control_Buffer(10),
-    --     dataIN => memoryIN,
-    --     dataOUT => memoryOUT,
-    --     address => aluResult,
-    --     resetSP => RST,
-    --     writeAddress => writeAddress,
-    --     memoryBuffer => memoryBuffer
-    -- );
+    MemoryStagePort : MemoryStage PORT MAP(
+        clock => clock,
+        RST => RST,
+        memoryRead => control_Buffer_Execute(14),
+        memoryWrite => control_Buffer_Execute(13),
+        pop => control_Buffer_Execute(9),
+        push => control_Buffer_Execute(10),
+        dataIN => memoryIN,
+        dataOUT => memoryOUT,
+        address => aluResult,
+        resetSP => RST,
+        writeAddress => writeAddress,
+        memoryBuffer => memoryBuffer,
+        writeBackSignal => control_Buffer_Execute(12)
 
-    -- WriteBackPort : WriteBackStage PORT MAP(
-    --     clock => clock,
-    --     memoryOut => memoryBuffer(35 DOWNTO 4),
-    --     writeAddress => memoryBuffer(3 DOWNTO 0),
-    --     writeEnable => memoryBuffer(36),
-    --     writeBackAddress => writeBackAddress,
-    --     writeData => writeBackData,
-    --     writeBackEnable => writeBackSignal
-    -- );
+    );
+
+    WriteBackPort : WriteBackStage PORT MAP(
+        clock => clock,
+        memoryOut => memoryBuffer(35 DOWNTO 4),
+        writeAddress => memoryBuffer(3 DOWNTO 0),
+        writeEnable => memoryBuffer(36),
+        writeBackAddress => writeBackAddress,
+        writeData => writeBackData,
+        writeBackEnable => writeBackSignal
+    );
 
 END rtl;
