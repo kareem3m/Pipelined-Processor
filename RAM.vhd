@@ -13,7 +13,7 @@ ENTITY RAM IS
 END RAM;
 
 ARCHITECTURE rtl OF RAM IS
-    TYPE mem IS ARRAY(0 TO 1024 * 1024 - 1) OF std_logic_vector(15 DOWNTO 0);
+    TYPE mem IS ARRAY(0 TO 1024 * 1024 +10) OF std_logic_vector(15 DOWNTO 0);
     SIGNAL ram_block : mem;
 BEGIN
     PROCESS (clock)

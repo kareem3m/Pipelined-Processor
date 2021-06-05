@@ -1,0 +1,37 @@
+# Current time Sat Jun 05 23:38:59 2021
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "10.5b"
+# Version = "2016.10"
+# Date = "Oct  5 2016"
+# Platform = win32pe
+# Signature = a4da31216fa3031746f0a74423efc007
+# 0    0x00ca68d6: '<unknown (@0xca68d6)>'
+# 1    0x00ca4223: '<unknown (@0xca4223)>'
+# 2    0x00bb6d78: '<unknown (@0xbb6d78)>'
+# 3    0x013106e4: '<unknown (@0x13106e4)>'
+# 4    0x00bef7cd: '<unknown (@0xbef7cd)>'
+# 5    0x00bf1bbe: '<unknown (@0xbf1bbe)>'
+# 6    0x00bf1141: '<unknown (@0xbf1141)>'
+# 7    0x00bf15bb: '<unknown (@0xbf15bb)>'
+# 8    0x00bf0f68: '<unknown (@0xbf0f68)>'
+# 9    0x00ba7a57: '<unknown (@0xba7a57)>'
+# 10   0x00bb8328: '<unknown (@0xbb8328)>'
+# 11   0x008f84e9: '<unknown (@0x8f84e9)>'
+# 12   0x008f9259: '<unknown (@0x8f9259)>'
+# 13   0x008f9da5: '<unknown (@0x8f9da5)>'
+# 14   0x008f257c: '<unknown (@0x8f257c)>'
+# 15   0x008ff34c: '<unknown (@0x8ff34c)>'
+# 16   0x00b20633: '<unknown (@0xb20633)>'
+# 17   0x00b21188: '<unknown (@0xb21188)>'
+# 18   0x00b1e244: '<unknown (@0xb1e244)>'
+# 19   0x008ff92d: '<unknown (@0x8ff92d)>'
+# 20   0x612ae716: 'Tcl_ListMathFuncs + 0x456' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
+# 21   0x612af37e: 'Tcl_EvalEx + 0x80e' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
+# 22   0x612aeb8c: 'Tcl_EvalEx + 0x1c' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
+# 23   0x00c93007: '<unknown (@0xc93007)>'
+# 24   0x61301795: 'Tcl_NotifyChannel + 0x125' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
+# 25   0x61350272: 'TclpHasSockets + 0x362' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
+# End of Stack Trace
+
+
