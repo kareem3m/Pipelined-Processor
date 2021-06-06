@@ -125,7 +125,8 @@ run
 run
 force -freeze sim:/integration/InPort 32'h50 0
 run
-force -freeze sim:/integration/InPort 32'h100 0
+force -freeze sim:/integration/InPort 32'hF100 0
+
 run
 force -freeze sim:/integration/InPort 32'h300 0
 run 1000
