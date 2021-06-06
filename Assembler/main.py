@@ -84,7 +84,6 @@ def HandleComments(txt):
             line=line.strip()
         if(line!=''):    
             LinesNoComments.append(line)
-    print(LinesNoComments)
     return LinesNoComments
 file = open("output.mem", "w")
 file.write(("// memory data file (do not edit the following line - required for mem load use)\n"
@@ -102,7 +101,7 @@ def Main(Lines):
         my_str = combine_whitespave.sub(" ", Lines[i]).strip()
         instructions.append(my_str.split(' '))
     address=0;
-    instr = ["0000000000000000\n"] * 28
+    instr = ["0000000000000000\n"] * 700
     for i in instructions:
         if i[0]=='.ORG':
             address = int(i[1])
@@ -112,7 +111,7 @@ def Main(Lines):
         elif i[0] in OneOperand:
             instr[address] = OneOperand[i[0]]+Registers[i[1]]+"111100"+'\n'
         elif i[0] in TwoOperands:
-            instr[address] = TwoOperands[i[0]]+Registers[i[1]]+Registers[i[2]]+"00"+'\n'
+            instr[address] = TwoOperands[i[0]]+Registers[i[2]]+Registers[i[1]]+"00"+'\n'
         elif i[0] in Offset:
             instr[address] = Offset[i[0]]+Registers[i[1]]+Registers[i[3]]+"00"+'\n'
             address = address+1

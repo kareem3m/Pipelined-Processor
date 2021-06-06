@@ -197,7 +197,7 @@ BEGIN
         o_RdstValStore => memoryIN,
         i_RdestEM => writeAddress,
         i_RdestMW => memoryBuffer(3 DOWNTO 0),
-        i_WB_EM_Signal => control_Buffer_Execute(12),
+        i_WB_EM_Signal => control_Buffer(12),
         i_WB_MW_Signal => memoryBuffer(36),
         o_outputPort => OutPort,
         i_opDstSrc => Address_Buffer,

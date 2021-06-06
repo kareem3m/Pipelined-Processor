@@ -46,7 +46,7 @@ entity EX_execute_stage is
         -- Unit Output
         o_aluResult: out std_logic_vector (EX_STAGE_SIZE-1 downto 0);
         o_jmp: out std_logic;
-        o_flag_reg: out std_logic_vector(2 downto 0);
+        o_flag_reg: out std_logic(2 downto 0);
 
 
 

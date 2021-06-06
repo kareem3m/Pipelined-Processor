@@ -56,12 +56,12 @@ ARCHITECTURE rtl OF MemoryStage IS
     SIGNAL memoryDataOut : std_logic_vector(31 DOWNTO 0);
 BEGIN
     memory : RAM PORT MAP(clock => clock, address => memoryAddress, dataIN => dataIN, dataOUT => memoryDataOut, writeEnable => writeEnable);
-    SP : REG GENERIC MAP(N => 20) PORT MAP(clock => clock, clear => '0', enable => '1', d => SPIN, q => SPOUT);
+    SP : Falling_register GENERIC MAP(REG_SIZE => 20) PORT MAP(clk => clock, rst => '0', enable => '1', d => SPIN, q => SPOUT);
 
     writeEnable <= (memoryWrite OR push) AND NOT pop;
 
-    memoryAddress <= SPOUT WHEN pop = '1' AND push = '0'
-        ELSE SPOUTminus2 WHEN push = '1' AND pop = '0'
+    memoryAddress <= std_logic_vector(unsigned(SPOUT) - 1) WHEN push = '1' AND pop = '0' 
+        ELSE std_logic_vector(unsigned(SPOUTplus2) - 1)  WHEN pop = '1' AND push = '0'
         ELSE address(19 DOWNTO 0);
 
     SPIN <= x"FFFFE" WHEN resetSP = '1'

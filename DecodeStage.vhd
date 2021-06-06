@@ -167,9 +167,10 @@ begin
     Clear_Buffer <= '1' WHEN JMP='1' OR RST_SIG='1'
     ELSE '0';
 
-    OPcode <= "000000" WHEN instruction(31 DOWNTO 26) = "110000" OR instruction(31 DOWNTO 26) = "110011" OR instruction(31 DOWNTO 26) = "100000" OR instruction(31 DOWNTO 26) = "100001"
-    ELSE "010001" WHEN instruction(31 DOWNTO 26) = "100011" OR instruction(31 DOWNTO 26) = "100100"
-    ELSE "010000" WHEN instruction(31 DOWNTO 26) = "100010"
+    OPcode <= "000000" WHEN instruction(31 DOWNTO 26) = "110000" OR instruction(31 DOWNTO 26) = "110011" OR instruction(31 DOWNTO 26) = "100001"
+    ELSE "010001" WHEN instruction(31 DOWNTO 26) = "100011" OR instruction(31 DOWNTO 26) = "100100" OR instruction(31 DOWNTO 26) = "010101"
+    ELSE "010000" WHEN instruction(31 DOWNTO 26) = "100010" 
+    ELSE "001001" WHEN instruction(31 DOWNTO 26) = "100000" 
     ELSE instruction(31 DOWNTO 26);
 
     Input_Buffer(127 DOWNTO 96) <= RD;
