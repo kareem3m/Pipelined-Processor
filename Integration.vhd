@@ -118,7 +118,7 @@ ARCHITECTURE rtl OF Integration IS
     
     --- FETCH STAGE ---
     SIGNAL noChange : std_logic; --stall
-    SIGNAL jmp : std_logic; --jump
+    SIGNAL s_jmp : std_logic; --jump
     SIGNAL PCIN : std_logic_vector(19 DOWNTO 0);
     SIGNAL PCOUT : std_logic_vector(19 DOWNTO 0);
     SIGNAL IR : std_logic_vector(31 DOWNTO 0);-----------input to decode
@@ -158,7 +158,7 @@ BEGIN
         clock => clock,
         resetPC => RST,
         noChange => noChange,
-        jmp => jmp,
+        jmp => s_jmp,
         jumpAddress => memoryIN(19 DOWNTO 0),
         stageBuffer => IR,
         PCInput => PCIN,
@@ -174,7 +174,7 @@ BEGIN
         Clk => clock,
         Mem_Read_Ex => control_Buffer(14),
         RDest_Ex => Address_Buffer(7 DOWNTO 4),
-        JMP => jmp,
+        JMP => s_jmp,
         RST_SIG => RST,
         RD_Buffer => RD_Buffer,
         RS_Buffer => RS_Buffer,
@@ -204,7 +204,7 @@ BEGIN
         i_clk => clock,
         i_rst => RST,
         o_aluResult => aluResult,
-        o_jmp => jmp,
+        o_jmp => s_jmp,
         o_buffRdstAddress => writeAddress,
         o_buffControl => control_Buffer_Execute,
         o_flag_reg => flagRegister
@@ -236,5 +236,6 @@ BEGIN
         writeData => writeBackData,
         writeBackEnable => writeBackSignal
     );
-
+   noChange <= control_Buffer(6);
+    
 END rtl;

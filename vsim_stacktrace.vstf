@@ -1,37 +1,369 @@
-# Current time Sat Jun 05 23:38:59 2021
+# Current time Sun Jun 06 23:10:54 2021
 # ModelSim - Intel FPGA Edition Stack Trace
 # Program = vsim
-# Id = "10.5b"
-# Version = "2016.10"
-# Date = "Oct  5 2016"
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
 # Platform = win32pe
-# Signature = a4da31216fa3031746f0a74423efc007
-# 0    0x00ca68d6: '<unknown (@0xca68d6)>'
-# 1    0x00ca4223: '<unknown (@0xca4223)>'
-# 2    0x00bb6d78: '<unknown (@0xbb6d78)>'
-# 3    0x013106e4: '<unknown (@0x13106e4)>'
-# 4    0x00bef7cd: '<unknown (@0xbef7cd)>'
-# 5    0x00bf1bbe: '<unknown (@0xbf1bbe)>'
-# 6    0x00bf1141: '<unknown (@0xbf1141)>'
-# 7    0x00bf15bb: '<unknown (@0xbf15bb)>'
-# 8    0x00bf0f68: '<unknown (@0xbf0f68)>'
-# 9    0x00ba7a57: '<unknown (@0xba7a57)>'
-# 10   0x00bb8328: '<unknown (@0xbb8328)>'
-# 11   0x008f84e9: '<unknown (@0x8f84e9)>'
-# 12   0x008f9259: '<unknown (@0x8f9259)>'
-# 13   0x008f9da5: '<unknown (@0x8f9da5)>'
-# 14   0x008f257c: '<unknown (@0x8f257c)>'
-# 15   0x008ff34c: '<unknown (@0x8ff34c)>'
-# 16   0x00b20633: '<unknown (@0xb20633)>'
-# 17   0x00b21188: '<unknown (@0xb21188)>'
-# 18   0x00b1e244: '<unknown (@0xb1e244)>'
-# 19   0x008ff92d: '<unknown (@0x8ff92d)>'
-# 20   0x612ae716: 'Tcl_ListMathFuncs + 0x456' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
-# 21   0x612af37e: 'Tcl_EvalEx + 0x80e' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
-# 22   0x612aeb8c: 'Tcl_EvalEx + 0x1c' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
-# 23   0x00c93007: '<unknown (@0xc93007)>'
-# 24   0x61301795: 'Tcl_NotifyChannel + 0x125' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
-# 25   0x61350272: 'TclpHasSockets + 0x362' in 'c:\intelfpga_lite\18.1\modelsim_ase\win32aloem\tcl85.dll'
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0x010642f6: '<unknown (@0x10642f6)>'
+# 1    0x010607a3: '<unknown (@0x10607a3)>'
+# 2    0x01062aea: '<unknown (@0x1062aea)>'
+# 3    0x00a703c5: '<unknown (@0xa703c5)>'
+# 4    0x012a911f: '<unknown (@0x12a911f)>'
+# 5    0x00a70433: '<unknown (@0xa70433)>'
+# 6    0x00a71c6d: '<unknown (@0xa71c6d)>'
+# 7    0x00a72d38: '<unknown (@0xa72d38)>'
+# 8    0x00a72e9a: '<unknown (@0xa72e9a)>'
+# 9    0x00a65fc5: '<unknown (@0xa65fc5)>'
+# 10   0x00a7889c: '<unknown (@0xa7889c)>'
+# 11   0x00d232c7: '<unknown (@0xd232c7)>'
+# 12   0x00d241b6: '<unknown (@0xd241b6)>'
+# 13   0x00d2051d: '<unknown (@0xd2051d)>'
+# 14   0x00a79150: '<unknown (@0xa79150)>'
+# 15   0x00d41a59: '<unknown (@0xd41a59)>'
+# End of Stack Trace
+
+
+# Current time Sun Jun 06 23:10:56 2021
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0x010642f6: '<unknown (@0x10642f6)>'
+# 1    0x010607a3: '<unknown (@0x10607a3)>'
+# 2    0x01062aea: '<unknown (@0x1062aea)>'
+# 3    0x00dc2af5: '<unknown (@0xdc2af5)>'
+# 4    0x012a8fbd: '<unknown (@0x12a8fbd)>'
+# 5    0x00dc2b60: '<unknown (@0xdc2b60)>'
+# 6    0x00dc38c0: '<unknown (@0xdc38c0)>'
+# 7    0x00dcdd4e: '<unknown (@0xdcdd4e)>'
+# 8    0x00dcdd77: '<unknown (@0xdcdd77)>'
+# 9    0x00dbc8e0: '<unknown (@0xdbc8e0)>'
+# 10   0x00dd63b5: '<unknown (@0xdd63b5)>'
+# 11   0x00dd5fd6: '<unknown (@0xdd5fd6)>'
+# 12   0x00dd60e6: '<unknown (@0xdd60e6)>'
+# 13   0x00cde8dc: '<unknown (@0xcde8dc)>'
+# 14   0x0096b4e0: '<unknown (@0x96b4e0)>'
+# 15   0x0130293b: '<unknown (@0x130293b)>'
+# 16   0x0096a836: '<unknown (@0x96a836)>'
+# 17   0x00aa938d: '<unknown (@0xaa938d)>'
+# 18   0x76f7cda8: 'LdrSetDllManifestProber + 0xf8' in 'c:\windows\system32\ntdll.dll'
+# 19   0x76f7902b: 'RtlUnwind + 0x1cb' in 'c:\windows\system32\ntdll.dll'
+# 20   0x76f84ec6: 'KiUserExceptionDispatcher + 0x26' in 'c:\windows\system32\ntdll.dll'
+# 21   0x010607a3: '<unknown (@0x10607a3)>'
+# 22   0x01062aea: '<unknown (@0x1062aea)>'
+# 23   0x00a703c5: '<unknown (@0xa703c5)>'
+# 24   0x012a911f: '<unknown (@0x12a911f)>'
+# 25   0x00a70433: '<unknown (@0xa70433)>'
+# 26   0x00a71c6d: '<unknown (@0xa71c6d)>'
+# 27   0x00a72d38: '<unknown (@0xa72d38)>'
+# 28   0x00a72e9a: '<unknown (@0xa72e9a)>'
+# 29   0x00a65fc5: '<unknown (@0xa65fc5)>'
+# 30   0x00a7889c: '<unknown (@0xa7889c)>'
+# 31   0x00d232c7: '<unknown (@0xd232c7)>'
+# 32   0x00d241b6: '<unknown (@0xd241b6)>'
+# 33   0x00d2051d: '<unknown (@0xd2051d)>'
+# 34   0x00a79150: '<unknown (@0xa79150)>'
+# 35   0x00d41a59: '<unknown (@0xd41a59)>'
+# End of Stack Trace
+
+
+# Current time Sun Jun 06 23:10:56 2021
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0x010642f6: '<unknown (@0x10642f6)>'
+# 1    0x010607a3: '<unknown (@0x10607a3)>'
+# 2    0x01062aea: '<unknown (@0x1062aea)>'
+# 3    0x00dc2af5: '<unknown (@0xdc2af5)>'
+# 4    0x012a8fbd: '<unknown (@0x12a8fbd)>'
+# 5    0x00dc2b60: '<unknown (@0xdc2b60)>'
+# 6    0x00dc38c0: '<unknown (@0xdc38c0)>'
+# 7    0x00dcdd4e: '<unknown (@0xdcdd4e)>'
+# 8    0x00dcdd77: '<unknown (@0xdcdd77)>'
+# 9    0x00dbc8e0: '<unknown (@0xdbc8e0)>'
+# 10   0x00dd63b5: '<unknown (@0xdd63b5)>'
+# 11   0x00dd5fd6: '<unknown (@0xdd5fd6)>'
+# 12   0x00dd60e6: '<unknown (@0xdd60e6)>'
+# 13   0x00cde8dc: '<unknown (@0xcde8dc)>'
+# 14   0x0096b4e0: '<unknown (@0x96b4e0)>'
+# 15   0x0130293b: '<unknown (@0x130293b)>'
+# 16   0x0096a836: '<unknown (@0x96a836)>'
+# 17   0x00aa938d: '<unknown (@0xaa938d)>'
+# 18   0x76f7cda8: 'LdrSetDllManifestProber + 0xf8' in 'c:\windows\system32\ntdll.dll'
+# 19   0x76f7902b: 'RtlUnwind + 0x1cb' in 'c:\windows\system32\ntdll.dll'
+# 20   0x76f84ec6: 'KiUserExceptionDispatcher + 0x26' in 'c:\windows\system32\ntdll.dll'
+# 21   0x010607a3: '<unknown (@0x10607a3)>'
+# 22   0x01062aea: '<unknown (@0x1062aea)>'
+# 23   0x00a703c5: '<unknown (@0xa703c5)>'
+# 24   0x012a911f: '<unknown (@0x12a911f)>'
+# 25   0x00a70433: '<unknown (@0xa70433)>'
+# 26   0x00a71c6d: '<unknown (@0xa71c6d)>'
+# 27   0x00a72d38: '<unknown (@0xa72d38)>'
+# 28   0x00a72e9a: '<unknown (@0xa72e9a)>'
+# 29   0x00a65fc5: '<unknown (@0xa65fc5)>'
+# 30   0x00a7889c: '<unknown (@0xa7889c)>'
+# 31   0x00d232c7: '<unknown (@0xd232c7)>'
+# 32   0x00d241b6: '<unknown (@0xd241b6)>'
+# 33   0x00d2051d: '<unknown (@0xd2051d)>'
+# 34   0x00a79150: '<unknown (@0xa79150)>'
+# 35   0x00d41a59: '<unknown (@0xd41a59)>'
+# End of Stack Trace
+
+
+# Current time Sun Jun 06 23:10:56 2021
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0x010642f6: '<unknown (@0x10642f6)>'
+# 1    0x010607a3: '<unknown (@0x10607a3)>'
+# 2    0x01062aea: '<unknown (@0x1062aea)>'
+# 3    0x00dc2af5: '<unknown (@0xdc2af5)>'
+# 4    0x012a8fbd: '<unknown (@0x12a8fbd)>'
+# 5    0x00dc2b60: '<unknown (@0xdc2b60)>'
+# 6    0x00dc38c0: '<unknown (@0xdc38c0)>'
+# 7    0x00dcdd4e: '<unknown (@0xdcdd4e)>'
+# 8    0x00dcdd77: '<unknown (@0xdcdd77)>'
+# 9    0x00dbc8e0: '<unknown (@0xdbc8e0)>'
+# 10   0x00dd63b5: '<unknown (@0xdd63b5)>'
+# 11   0x00dd5fd6: '<unknown (@0xdd5fd6)>'
+# 12   0x00dd60e6: '<unknown (@0xdd60e6)>'
+# 13   0x00cde8dc: '<unknown (@0xcde8dc)>'
+# 14   0x0096b4e0: '<unknown (@0x96b4e0)>'
+# 15   0x0130293b: '<unknown (@0x130293b)>'
+# 16   0x0096a836: '<unknown (@0x96a836)>'
+# 17   0x00aa938d: '<unknown (@0xaa938d)>'
+# 18   0x76f7cda8: 'LdrSetDllManifestProber + 0xf8' in 'c:\windows\system32\ntdll.dll'
+# 19   0x76f7902b: 'RtlUnwind + 0x1cb' in 'c:\windows\system32\ntdll.dll'
+# 20   0x76f84ec6: 'KiUserExceptionDispatcher + 0x26' in 'c:\windows\system32\ntdll.dll'
+# 21   0x010607a3: '<unknown (@0x10607a3)>'
+# 22   0x01062aea: '<unknown (@0x1062aea)>'
+# 23   0x00a703c5: '<unknown (@0xa703c5)>'
+# 24   0x012a911f: '<unknown (@0x12a911f)>'
+# 25   0x00a70433: '<unknown (@0xa70433)>'
+# 26   0x00a71c6d: '<unknown (@0xa71c6d)>'
+# 27   0x00a72d38: '<unknown (@0xa72d38)>'
+# 28   0x00a72e9a: '<unknown (@0xa72e9a)>'
+# 29   0x00a65fc5: '<unknown (@0xa65fc5)>'
+# 30   0x00a7889c: '<unknown (@0xa7889c)>'
+# 31   0x00d232c7: '<unknown (@0xd232c7)>'
+# 32   0x00d241b6: '<unknown (@0xd241b6)>'
+# 33   0x00d2051d: '<unknown (@0xd2051d)>'
+# 34   0x00a79150: '<unknown (@0xa79150)>'
+# 35   0x00d41a59: '<unknown (@0xd41a59)>'
+# End of Stack Trace
+
+
+# Current time Sun Jun 06 23:11:56 2021
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0x010642f6: '<unknown (@0x10642f6)>'
+# 1    0x010607a3: '<unknown (@0x10607a3)>'
+# 2    0x00de0c2a: '<unknown (@0xde0c2a)>'
+# 3    0x01375e74: '<unknown (@0x1375e74)>'
+# 4    0x00e36bdd: '<unknown (@0xe36bdd)>'
+# 5    0x00e3912e: '<unknown (@0xe3912e)>'
+# 6    0x00e38551: '<unknown (@0xe38551)>'
+# 7    0x00e38a22: '<unknown (@0xe38a22)>'
+# 8    0x00e38378: '<unknown (@0xe38378)>'
+# 9    0x00dd17d7: '<unknown (@0xdd17d7)>'
+# 10   0x00de2198: '<unknown (@0xde2198)>'
+# 11   0x00a70459: '<unknown (@0xa70459)>'
+# 12   0x00a71c6d: '<unknown (@0xa71c6d)>'
+# 13   0x00a72d38: '<unknown (@0xa72d38)>'
+# 14   0x00a72e9a: '<unknown (@0xa72e9a)>'
+# 15   0x00a65fc5: '<unknown (@0xa65fc5)>'
+# 16   0x00a7889c: '<unknown (@0xa7889c)>'
+# 17   0x00d232c7: '<unknown (@0xd232c7)>'
+# 18   0x00d241b6: '<unknown (@0xd241b6)>'
+# 19   0x00d2051d: '<unknown (@0xd2051d)>'
+# 20   0x00a79150: '<unknown (@0xa79150)>'
+# 21   0x00d41a59: '<unknown (@0xd41a59)>'
+# End of Stack Trace
+
+
+# Current time Sun Jun 06 23:15:53 2021
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0x010642f6: '<unknown (@0x10642f6)>'
+# 1    0x010607a3: '<unknown (@0x10607a3)>'
+# 2    0x01062aea: '<unknown (@0x1062aea)>'
+# 3    0x00a703c5: '<unknown (@0xa703c5)>'
+# 4    0x012a911f: '<unknown (@0x12a911f)>'
+# 5    0x00a70433: '<unknown (@0xa70433)>'
+# 6    0x00a71c6d: '<unknown (@0xa71c6d)>'
+# 7    0x00a72d38: '<unknown (@0xa72d38)>'
+# 8    0x00a72e9a: '<unknown (@0xa72e9a)>'
+# 9    0x00a65fc5: '<unknown (@0xa65fc5)>'
+# 10   0x00a7889c: '<unknown (@0xa7889c)>'
+# 11   0x00d232c7: '<unknown (@0xd232c7)>'
+# 12   0x00d241b6: '<unknown (@0xd241b6)>'
+# 13   0x00d2051d: '<unknown (@0xd2051d)>'
+# 14   0x00a79150: '<unknown (@0xa79150)>'
+# 15   0x00d41a59: '<unknown (@0xd41a59)>'
+# End of Stack Trace
+
+
+# Current time Sun Jun 06 23:16:03 2021
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0x010642f6: '<unknown (@0x10642f6)>'
+# 1    0x010607a3: '<unknown (@0x10607a3)>'
+# 2    0x01062aea: '<unknown (@0x1062aea)>'
+# 3    0x00dc2af5: '<unknown (@0xdc2af5)>'
+# 4    0x012a8fbd: '<unknown (@0x12a8fbd)>'
+# 5    0x00dc2b60: '<unknown (@0xdc2b60)>'
+# 6    0x00dc38c0: '<unknown (@0xdc38c0)>'
+# 7    0x00dcdd4e: '<unknown (@0xdcdd4e)>'
+# 8    0x00dcdd77: '<unknown (@0xdcdd77)>'
+# 9    0x00dbc8e0: '<unknown (@0xdbc8e0)>'
+# 10   0x00dd63b5: '<unknown (@0xdd63b5)>'
+# 11   0x00dd5fd6: '<unknown (@0xdd5fd6)>'
+# 12   0x00dd60e6: '<unknown (@0xdd60e6)>'
+# 13   0x00cde8dc: '<unknown (@0xcde8dc)>'
+# 14   0x0096b4e0: '<unknown (@0x96b4e0)>'
+# 15   0x0130293b: '<unknown (@0x130293b)>'
+# 16   0x0096a836: '<unknown (@0x96a836)>'
+# 17   0x00aa938d: '<unknown (@0xaa938d)>'
+# 18   0x76f7cda8: 'LdrSetDllManifestProber + 0xf8' in 'c:\windows\system32\ntdll.dll'
+# 19   0x76f7902b: 'RtlUnwind + 0x1cb' in 'c:\windows\system32\ntdll.dll'
+# 20   0x76f84ec6: 'KiUserExceptionDispatcher + 0x26' in 'c:\windows\system32\ntdll.dll'
+# 21   0x010607a3: '<unknown (@0x10607a3)>'
+# 22   0x01062aea: '<unknown (@0x1062aea)>'
+# 23   0x00a703c5: '<unknown (@0xa703c5)>'
+# 24   0x012a911f: '<unknown (@0x12a911f)>'
+# 25   0x00a70433: '<unknown (@0xa70433)>'
+# 26   0x00a71c6d: '<unknown (@0xa71c6d)>'
+# 27   0x00a72d38: '<unknown (@0xa72d38)>'
+# 28   0x00a72e9a: '<unknown (@0xa72e9a)>'
+# 29   0x00a65fc5: '<unknown (@0xa65fc5)>'
+# 30   0x00a7889c: '<unknown (@0xa7889c)>'
+# 31   0x00d232c7: '<unknown (@0xd232c7)>'
+# 32   0x00d241b6: '<unknown (@0xd241b6)>'
+# 33   0x00d2051d: '<unknown (@0xd2051d)>'
+# 34   0x00a79150: '<unknown (@0xa79150)>'
+# 35   0x00d41a59: '<unknown (@0xd41a59)>'
+# End of Stack Trace
+
+
+# Current time Sun Jun 06 23:16:03 2021
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0x010642f6: '<unknown (@0x10642f6)>'
+# 1    0x010607a3: '<unknown (@0x10607a3)>'
+# 2    0x01062aea: '<unknown (@0x1062aea)>'
+# 3    0x00dc2af5: '<unknown (@0xdc2af5)>'
+# 4    0x012a8fbd: '<unknown (@0x12a8fbd)>'
+# 5    0x00dc2b60: '<unknown (@0xdc2b60)>'
+# 6    0x00dc38c0: '<unknown (@0xdc38c0)>'
+# 7    0x00dcdd4e: '<unknown (@0xdcdd4e)>'
+# 8    0x00dcdd77: '<unknown (@0xdcdd77)>'
+# 9    0x00dbc8e0: '<unknown (@0xdbc8e0)>'
+# 10   0x00dd63b5: '<unknown (@0xdd63b5)>'
+# 11   0x00dd5fd6: '<unknown (@0xdd5fd6)>'
+# 12   0x00dd60e6: '<unknown (@0xdd60e6)>'
+# 13   0x00cde8dc: '<unknown (@0xcde8dc)>'
+# 14   0x0096b4e0: '<unknown (@0x96b4e0)>'
+# 15   0x0130293b: '<unknown (@0x130293b)>'
+# 16   0x0096a836: '<unknown (@0x96a836)>'
+# 17   0x00aa938d: '<unknown (@0xaa938d)>'
+# 18   0x76f7cda8: 'LdrSetDllManifestProber + 0xf8' in 'c:\windows\system32\ntdll.dll'
+# 19   0x76f7902b: 'RtlUnwind + 0x1cb' in 'c:\windows\system32\ntdll.dll'
+# 20   0x76f84ec6: 'KiUserExceptionDispatcher + 0x26' in 'c:\windows\system32\ntdll.dll'
+# 21   0x010607a3: '<unknown (@0x10607a3)>'
+# 22   0x01062aea: '<unknown (@0x1062aea)>'
+# 23   0x00a703c5: '<unknown (@0xa703c5)>'
+# 24   0x012a911f: '<unknown (@0x12a911f)>'
+# 25   0x00a70433: '<unknown (@0xa70433)>'
+# 26   0x00a71c6d: '<unknown (@0xa71c6d)>'
+# 27   0x00a72d38: '<unknown (@0xa72d38)>'
+# 28   0x00a72e9a: '<unknown (@0xa72e9a)>'
+# 29   0x00a65fc5: '<unknown (@0xa65fc5)>'
+# 30   0x00a7889c: '<unknown (@0xa7889c)>'
+# 31   0x00d232c7: '<unknown (@0xd232c7)>'
+# 32   0x00d241b6: '<unknown (@0xd241b6)>'
+# 33   0x00d2051d: '<unknown (@0xd2051d)>'
+# 34   0x00a79150: '<unknown (@0xa79150)>'
+# 35   0x00d41a59: '<unknown (@0xd41a59)>'
+# End of Stack Trace
+
+
+# Current time Sun Jun 06 23:16:03 2021
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vsim
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+# Signature = 4a3706afe29a2b87def93ebd4f2693fa
+# 0    0x010642f6: '<unknown (@0x10642f6)>'
+# 1    0x010607a3: '<unknown (@0x10607a3)>'
+# 2    0x01062aea: '<unknown (@0x1062aea)>'
+# 3    0x00dc2af5: '<unknown (@0xdc2af5)>'
+# 4    0x012a8fbd: '<unknown (@0x12a8fbd)>'
+# 5    0x00dc2b60: '<unknown (@0xdc2b60)>'
+# 6    0x00dc38c0: '<unknown (@0xdc38c0)>'
+# 7    0x00dcdd4e: '<unknown (@0xdcdd4e)>'
+# 8    0x00dcdd77: '<unknown (@0xdcdd77)>'
+# 9    0x00dbc8e0: '<unknown (@0xdbc8e0)>'
+# 10   0x00dd63b5: '<unknown (@0xdd63b5)>'
+# 11   0x00dd5fd6: '<unknown (@0xdd5fd6)>'
+# 12   0x00dd60e6: '<unknown (@0xdd60e6)>'
+# 13   0x00cde8dc: '<unknown (@0xcde8dc)>'
+# 14   0x0096b4e0: '<unknown (@0x96b4e0)>'
+# 15   0x0130293b: '<unknown (@0x130293b)>'
+# 16   0x0096a836: '<unknown (@0x96a836)>'
+# 17   0x00aa938d: '<unknown (@0xaa938d)>'
+# 18   0x76f7cda8: 'LdrSetDllManifestProber + 0xf8' in 'c:\windows\system32\ntdll.dll'
+# 19   0x76f7902b: 'RtlUnwind + 0x1cb' in 'c:\windows\system32\ntdll.dll'
+# 20   0x76f84ec6: 'KiUserExceptionDispatcher + 0x26' in 'c:\windows\system32\ntdll.dll'
+# 21   0x010607a3: '<unknown (@0x10607a3)>'
+# 22   0x01062aea: '<unknown (@0x1062aea)>'
+# 23   0x00a703c5: '<unknown (@0xa703c5)>'
+# 24   0x012a911f: '<unknown (@0x12a911f)>'
+# 25   0x00a70433: '<unknown (@0xa70433)>'
+# 26   0x00a71c6d: '<unknown (@0xa71c6d)>'
+# 27   0x00a72d38: '<unknown (@0xa72d38)>'
+# 28   0x00a72e9a: '<unknown (@0xa72e9a)>'
+# 29   0x00a65fc5: '<unknown (@0xa65fc5)>'
+# 30   0x00a7889c: '<unknown (@0xa7889c)>'
+# 31   0x00d232c7: '<unknown (@0xd232c7)>'
+# 32   0x00d241b6: '<unknown (@0xd241b6)>'
+# 33   0x00d2051d: '<unknown (@0xd2051d)>'
+# 34   0x00a79150: '<unknown (@0xa79150)>'
+# 35   0x00d41a59: '<unknown (@0xd41a59)>'
 # End of Stack Trace
 
 
