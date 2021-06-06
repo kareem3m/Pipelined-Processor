@@ -31,7 +31,6 @@ sim:/integration/RST \
 sim:/integration/OutPort \
 sim:/integration/InPort \
 sim:/integration/noChange \
-sim:/integration/jmp \
 sim:/integration/PCIN \
 sim:/integration/PCOUT \
 sim:/integration/IR \
@@ -60,7 +59,7 @@ sim:/integration/RST \
 sim:/integration/OutPort \
 sim:/integration/InPort \
 sim:/integration/noChange \
-sim:/integration/jmp \
+sim:/integration/s_jmp \
 sim:/integration/PCIN \
 sim:/integration/PCOUT \
 sim:/integration/IR \
@@ -93,24 +92,20 @@ sim:/integration/DecodeStagePort/R7/q
 
 force -freeze sim:/integration/RST 1 0
 force -freeze sim:/integration/noChange 0 0
-force -freeze sim:/integration/jmp 0 0
 force -freeze sim:/integration/InPort 32'h30 0
 force -freeze sim:/integration/clock 1 0, 0 {50 ns} -r 100
 run
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /integration/FetchStagePort/instructionsMemory
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /integration/FetchStagePort/instructionsMemory
 force -freeze sim:/integration/RST 0 0
 run 
 run
 run
 force -freeze sim:/integration/InPort 32'h50 0
 run
-force -freeze sim:/integration/InPort 32'h100 0
+force -freeze sim:/integration/InPort 32'hF100 0
+
 run
 force -freeze sim:/integration/InPort 32'h300 0
-run 1000
+
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 250 ns  Iteration: 2  Instance: /integration/ExecuteStagePort/l_alu
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0

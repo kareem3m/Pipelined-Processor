@@ -101,10 +101,10 @@ def Main(Lines):
         my_str = combine_whitespave.sub(" ", Lines[i]).strip()
         instructions.append(my_str.split(' '))
     address=0;
-    instr = ["0000000000000000\n"] * 700
+    instr = ["0000000000000000\n"] * 200000
     for i in instructions:
         if i[0]=='.ORG':
-            address = int(i[1])
+            address = int(i[1],16)
             address -= 1
         elif i[0] in NoOperand:
             instr[address] = NoOperand[i[0]]+"1111111100"+'\n'
@@ -121,7 +121,7 @@ def Main(Lines):
             address=address+1
             instr[address] = bin(int(i[2],16))[2:].zfill(16)+'\n'
         elif re.match('^[-+]?[0-9]+$', i[0]):
-            instr[address] = bin(int(i[0]))[2:].zfill(16)+'\n'
+            instr[address] = bin(int(i[0],16))[2:].zfill(16)+'\n'
         address += 1
     for _, line in enumerate(instr):
         file.write(str(line)) 
