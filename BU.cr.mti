@@ -61,7 +61,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity MemoryStage
 -- Compiling architecture rtl of MemoryStage
 
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd}
+} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_ALU.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -117,7 +117,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity ControlUnit
 -- Compiling architecture Control of ControlUnit
 
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd}
+} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\HazardDetectionUnit.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO

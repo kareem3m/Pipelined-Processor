@@ -30,12 +30,13 @@ ARCHITECTURE rtl OF Integration IS
         PORT (
             instruction, WB_Data_IN : IN std_logic_vector(31 DOWNTO 0);
             WB_Address_IN, RDest_Ex : IN std_logic_vector(3 DOWNTO 0);
-            WB_Signal, Clk, Mem_Read_Ex, JMP, RST_SIG,Insert_Bubble : IN std_logic;
+            WB_Signal, Clk, Mem_Read_Ex, JMP, RST_SIG : IN std_logic;
             RD_Buffer : OUT std_logic_vector(31 DOWNTO 0);
             RS_Buffer : OUT std_logic_vector(31 DOWNTO 0);
             SGIN_Buffer : OUT std_logic_vector(31 DOWNTO 0);
             control_Buffer : OUT std_logic_vector(17 DOWNTO 0);
-            Address_Buffer : OUT std_logic_vector(13 DOWNTO 0)
+            Address_Buffer : OUT std_logic_vector(13 DOWNTO 0);
+            N_Change:OUT std_logic
         );
     END COMPONENT;
 
@@ -117,7 +118,7 @@ ARCHITECTURE rtl OF Integration IS
     END COMPONENT;
     
     --- FETCH STAGE ---
-    SIGNAL noChange : std_logic; --stall
+    -- SIGNAL noChange : std_logic; --stall
     SIGNAL s_jmp : std_logic; --jump
     SIGNAL PCIN : std_logic_vector(19 DOWNTO 0);
     SIGNAL PCOUT : std_logic_vector(19 DOWNTO 0);
@@ -132,7 +133,8 @@ ARCHITECTURE rtl OF Integration IS
     SIGNAL SGIN_Buffer : std_logic_vector(31 DOWNTO 0);
     SIGNAL control_Buffer : std_logic_vector(17 DOWNTO 0);
     SIGNAL Address_Buffer : std_logic_vector(13 DOWNTO 0);
-    SIGNAL S_Insert_Bubble:std_logic;
+    SIGNAL N_CHANGE_SIG: std_logic;
+
     --- Execute ---
     SIGNAL aluResult : std_logic_vector(31 DOWNTO 0);
     SIGNAL control_Buffer_Execute : std_logic_vector(17 DOWNTO 0);
@@ -159,7 +161,7 @@ BEGIN
     PORT MAP(
         clock => clock,
         resetPC => RST,
-        noChange => noChange,
+        noChange => N_Change_SIG,
         jmp => s_jmp,
         jumpAddress => o_wow2(19 DOWNTO 0),
         stageBuffer => IR,
@@ -178,12 +180,12 @@ BEGIN
         RDest_Ex => Address_Buffer(7 DOWNTO 4),
         JMP => s_jmp,
         RST_SIG => RST,
-        Insert_Bubble=>S_Insert_Bubble,
         RD_Buffer => RD_Buffer,
         RS_Buffer => RS_Buffer,
         SGIN_Buffer => SGIN_Buffer,
         control_Buffer => control_Buffer,
-        Address_Buffer => Address_Buffer
+        Address_Buffer => Address_Buffer,
+        N_Change =>N_Change_SIG
     );
     
     ExecuteStagePort : EX_execute_stage
@@ -239,6 +241,4 @@ BEGIN
         writeData => writeBackData,
         writeBackEnable => writeBackSignal
     );
-   noChange <= control_Buffer(6);
-   S_Insert_Bubble<= control_Buffer(4);
 END rtl;
