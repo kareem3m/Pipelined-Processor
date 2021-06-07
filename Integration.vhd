@@ -30,7 +30,7 @@ ARCHITECTURE rtl OF Integration IS
         PORT (
             instruction, WB_Data_IN : IN std_logic_vector(31 DOWNTO 0);
             WB_Address_IN, RDest_Ex : IN std_logic_vector(3 DOWNTO 0);
-            WB_Signal, Clk, Mem_Read_Ex, JMP, RST_SIG : IN std_logic;
+            WB_Signal, Clk, Mem_Read_Ex, JMP, RST_SIG,Insert_Bubble : IN std_logic;
             RD_Buffer : OUT std_logic_vector(31 DOWNTO 0);
             RS_Buffer : OUT std_logic_vector(31 DOWNTO 0);
             SGIN_Buffer : OUT std_logic_vector(31 DOWNTO 0);
@@ -87,8 +87,8 @@ ARCHITECTURE rtl OF Integration IS
             o_flag_reg: out std_logic_vector(2 downto 0);
             -- Buffer
             o_buffRdstAddress: out std_logic_vector (3 downto 0);
-            o_buffControl: out std_logic_vector (17 downto 0)
-    
+            o_buffControl: out std_logic_vector (17 downto 0);
+            o_wow:out std_logic_vector (EX_STAGE_SIZE-1 downto 0)
         );
     end COMPONENT;
     COMPONENT MemoryStage IS
@@ -132,11 +132,12 @@ ARCHITECTURE rtl OF Integration IS
     SIGNAL SGIN_Buffer : std_logic_vector(31 DOWNTO 0);
     SIGNAL control_Buffer : std_logic_vector(17 DOWNTO 0);
     SIGNAL Address_Buffer : std_logic_vector(13 DOWNTO 0);
-
+    SIGNAL S_Insert_Bubble:std_logic;
     --- Execute ---
     SIGNAL aluResult : std_logic_vector(31 DOWNTO 0);
     SIGNAL control_Buffer_Execute : std_logic_vector(17 DOWNTO 0);
     SIGNAL flagRegister: std_logic_vector(2 DOWNTO 0);
+    SIGNAL o_wow2:std_logic_vector(31 DOWNTO 0);
     --- MEMORY STAGE ---
     SIGNAL memoryRead : std_logic;
     SIGNAL memoryWrite : std_logic;
@@ -152,6 +153,7 @@ ARCHITECTURE rtl OF Integration IS
     SIGNAL writeBackData : std_logic_vector(31 DOWNTO 0);
     SIGNAL writeBackAddress : std_logic_vector(3 DOWNTO 0);
     SIGNAL writeBackSignal : std_logic;
+    
 BEGIN
     FetchStagePort : FetchStage
     PORT MAP(
@@ -159,7 +161,7 @@ BEGIN
         resetPC => RST,
         noChange => noChange,
         jmp => s_jmp,
-        jumpAddress => memoryIN(19 DOWNTO 0),
+        jumpAddress => o_wow2(19 DOWNTO 0),
         stageBuffer => IR,
         PCInput => PCIN,
         PCOutput => PCOUT
@@ -176,6 +178,7 @@ BEGIN
         RDest_Ex => Address_Buffer(7 DOWNTO 4),
         JMP => s_jmp,
         RST_SIG => RST,
+        Insert_Bubble=>S_Insert_Bubble,
         RD_Buffer => RD_Buffer,
         RS_Buffer => RS_Buffer,
         SGIN_Buffer => SGIN_Buffer,
@@ -207,8 +210,8 @@ BEGIN
         o_jmp => s_jmp,
         o_buffRdstAddress => writeAddress,
         o_buffControl => control_Buffer_Execute,
-        o_flag_reg => flagRegister
-
+        o_flag_reg => flagRegister,
+        o_wow =>o_wow2
     );
     MemoryStagePort : MemoryStage PORT MAP(
         clock => clock,
@@ -237,5 +240,5 @@ BEGIN
         writeBackEnable => writeBackSignal
     );
    noChange <= control_Buffer(6);
-    
+   S_Insert_Bubble<= control_Buffer(4);
 END rtl;

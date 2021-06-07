@@ -10,6 +10,7 @@ entity Ex_ALU is
         op2   : in std_logic_vector (ALU_SIZE-1 downto 0); --Rsrc
         operation : in std_logic_vector (4 downto 0);
         cin: in std_logic;
+        jmpzero:in std_logic;
         result: out std_logic_vector (ALU_SIZE-1 downto 0);
         flags: out std_logic_vector (2 downto 0)
     );
@@ -25,6 +26,7 @@ port   (a, b : in std_logic_vector(ADDER_SIZE-1 downto 0) ;
         cout : out std_logic);
 end component;
 
+
 signal resultSignal: std_logic_vector(ALU_SIZE-1 downto 0);
 signal sumSignal: std_logic_vector(ALU_SIZE-1 downto 0);
 signal subSignal: std_logic_vector(ALU_SIZE-1 downto 0);
@@ -32,11 +34,14 @@ signal notOp1: std_logic_vector(ALU_SIZE-1 downto 0);
 signal sumCarrySignal: std_logic;
 signal subCarrySignal: std_logic;
 
+signal zeroresult: std_logic;
+
 begin
     add: Ex_ripple_adder generic map (ALU_SIZE) port map (op1, op2, '0', sumSignal, sumCarrySignal);
     notOp1 <= not op1;
     sub: Ex_ripple_adder generic map (ALU_SIZE) port map (op2, notOp1, '1', subSignal, subCarrySignal); -- Rsrc - Rdst
 
+    -- freg:
     resultSignal <= 
     (others => '0') when operation = "00011" -- CLR
     else (not op1) when operation = "00100" -- NOT
@@ -53,6 +58,7 @@ begin
     else std_logic_vector(shift_right(unsigned(op1), to_integer(unsigned(op2)))) when operation = "10111" -- SHR
     else (op1(ALU_SIZE-2 downto 0) & cin) when operation = "11000" -- RLC
     else (cin & op1(ALU_SIZE-1 downto 1)) when operation = "11001" -- RRC
+    else (others=>'1') when jmpzero='1'
     else resultSignal;
     result <= resultSignal;
 
@@ -65,7 +71,14 @@ begin
     else op1(to_integer(unsigned(op2(4 downto 0))-1))           when operation = "10111"  -- SHR
     else op1(ALU_SIZE-1)                            when operation = "11000"  -- RLC
     else op1(0)                                     when operation = "11001"; -- RRC
-    flags(1) <= nor_reduce(resultSignal); --zero flag
+
+    -- process (all)
+    -- begin
+        
+    -- end process;
+    zeroresult<=nor_reduce(resultSignal);
+    flags(1) <= '0'when (jmpzero='1'or(not(zeroresult)='1')) 
+    else '1';
     flags(2) <= resultSignal(ALU_SIZE-1); --negative flag
 
 end Ex_ALU_Arch;

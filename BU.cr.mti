@@ -1,19 +1,12 @@
-{D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity Integration
--- Compiling architecture rtl of Integration
-
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Reg.vhd}
+{D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Compiling entity Reg
 -- Compiling architecture rtl of Reg
+-- Compiling entity Reg2
+-- Compiling architecture rtl2 of Reg2
 
 } {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
@@ -43,16 +36,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity RAM
 -- Compiling architecture rtl of RAM
 
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/DecodeStage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/DecodeStage.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity DecodeStage
--- Compiling architecture Dec of DecodeStage
-
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_register.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_register.vhd}
+} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_register.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_register.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -68,7 +52,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity EX_execute_stage
 -- Compiling architecture EX_execute_stage_arch of EX_execute_stage
 
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/MemoryStage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/MemoryStage.vhd}
+} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/MemoryStage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\MemoryStage.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -77,7 +61,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity MemoryStage
 -- Compiling architecture rtl of MemoryStage
 
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_ALU.vhd}
+} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -97,7 +81,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity Ex_forwarding_unit
 -- Compiling architecture rtl of Ex_forwarding_unit
 
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_muxes.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_muxes.vhd}
+} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_muxes.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_muxes.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -115,7 +99,7 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity Ex_jump_unit
 -- Compiling architecture Ex_jump_unit_arch of Ex_jump_unit
 
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/WriteBackStage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\WriteBackStage.vhd}
+} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/WriteBackStage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/WriteBackStage.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO

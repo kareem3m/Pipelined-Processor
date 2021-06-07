@@ -6,7 +6,7 @@ ENTITY DecodeStage IS
 
         instruction,WB_Data_IN : IN std_logic_vector(31 DOWNTO 0);
         WB_Address_IN,RDest_Ex: IN  std_logic_vector(3 DOWNTO 0);
-        WB_Signal,Clk,Mem_Read_Ex,JMP,RST_SIG:IN std_logic ;  
+        WB_Signal,Clk,Mem_Read_Ex,JMP,RST_SIG,Insert_Bubble:IN std_logic ;  
         RD_Buffer:OUT std_logic_vector(31 DOWNTO 0);
         RS_Buffer:OUT std_logic_vector(31 DOWNTO 0);
         SGIN_Buffer:OUT std_logic_vector(31 DOWNTO 0);
@@ -50,6 +50,17 @@ COMPONENT Falling_register
             d : in std_logic_vector (REG_SIZE-1 downto 0);
             q : out std_logic_vector (REG_SIZE-1 downto 0)
         );
+END COMPONENT;
+
+COMPONENT Reg2 IS
+    GENERIC (
+        N : integer
+    );
+    PORT (
+        clock, clear, enable : IN std_logic;
+        d : IN std_logic_vector(N - 1 DOWNTO 0);
+        q : OUT std_logic_vector(N - 1 DOWNTO 0)
+    );
 END COMPONENT;
 
 SIGNAL R0_EN :std_logic;
@@ -114,11 +125,11 @@ begin
     CU : ControlUnit PORT MAP(instruction(31 DOWNTO 26),Immediate_SIG,Offset_SIG,Alu_EN_SIG,Mem_Read_SIG,Mem_Write_SIG,WB_SIG,Mem_To_Reg_SIG,Push_SIG,Pop_SIG,Port_in_SIG, Port_out_SIG, JMPZ_SIG, JMPU_SIG);  
     HU : HazardDetectionUnit PORT MAP(instruction(21 DOWNTO 18),instruction(25 DOWNTO 22),RDest_Ex,Mem_Read_Ex,No_Change_SIG,Shift_Disable_SIG,Insert_Bubble_SIG);
     
-    BuffRD : Falling_register  GENERIC MAP(REG_SIZE => 32) PORT MAP(Clk,Clear_Buffer,'1',Input_Buffer(127 DOWNTO 96), RD_Buffer_SIG);--enable control???
+    BuffRD : Reg2  GENERIC MAP(32) PORT MAP(Clk,Clear_Buffer,'1',Input_Buffer(127 DOWNTO 96), RD_Buffer_SIG);--enable control???
     BuffRS : Falling_register  GENERIC MAP(REG_SIZE => 32) PORT MAP(Clk,Clear_Buffer,'1',Input_Buffer(95 DOWNTO 64), RS_Buffer_SIG);--enable control???
     BuffSIGN : Falling_register  GENERIC MAP(REG_SIZE => 32) PORT MAP(Clk,Clear_Buffer,'1',Input_Buffer(63 DOWNTO 32), Sign_Buffer_SIG);--enable control???
-    BuffControl : Falling_register  GENERIC MAP(REG_SIZE => 18) PORT MAP(Clk,Clear_Buffer,'1',Input_Buffer(31 DOWNTO 14), Control_Buffer_SIG);--enable control???
-    BuffAddress : Falling_register  GENERIC MAP(REG_SIZE => 14) PORT MAP(Clk,Clear_Buffer,'1',Input_Buffer(13 DOWNTO 0), Address_Buffer_SIG);--enable control???
+    BuffControl : Reg2  GENERIC MAP(18) PORT MAP(Clk,Clear_Buffer,'1',Input_Buffer(31 DOWNTO 14), Control_Buffer_SIG);--enable control???
+    BuffAddress : Reg2  GENERIC MAP(14) PORT MAP(Clk,Clear_Buffer,'1',Input_Buffer(13 DOWNTO 0), Address_Buffer_SIG);--enable control???
 
     --Clear buffer from jmp or rst ????????????
     R0_EN  <='1'  WHEN WB_Address_IN = "0000" AND WB_Signal = '1' 
@@ -164,13 +175,14 @@ begin
     SGIN_Buffer <= Sign_Buffer_SIG;
     control_Buffer <= Control_Buffer_SIG;
     Address_Buffer <= Address_Buffer_SIG;
-    Clear_Buffer <= '1' WHEN JMP='1' OR RST_SIG='1'
+    Clear_Buffer <= '1' WHEN JMP='1' OR RST_SIG='1' OR Insert_Bubble ='1'
     ELSE '0';
 
-    OPcode <= "000000" WHEN instruction(31 DOWNTO 26) = "110000" OR instruction(31 DOWNTO 26) = "110011" OR instruction(31 DOWNTO 26) = "100001"
+    OPcode <= "000000" WHEN  instruction(31 DOWNTO 26) = "110011" OR instruction(31 DOWNTO 26) = "100001"
     ELSE "010001" WHEN instruction(31 DOWNTO 26) = "100011" OR instruction(31 DOWNTO 26) = "100100" OR instruction(31 DOWNTO 26) = "010101"
     ELSE "010000" WHEN instruction(31 DOWNTO 26) = "100010" 
     ELSE "001001" WHEN instruction(31 DOWNTO 26) = "100000" 
+    ELSE "111111" WHEN instruction(31 DOWNTO 26) = "110000"
     ELSE instruction(31 DOWNTO 26);
 
     Input_Buffer(127 DOWNTO 96) <= RD;

@@ -53,7 +53,8 @@ entity EX_execute_stage is
 
         -- Buffer
         o_buffRdstAddress: out std_logic_vector (3 downto 0);
-        o_buffControl: out std_logic_vector (17 downto 0)
+        o_buffControl: out std_logic_vector (17 downto 0);
+        o_wow:out std_logic_vector (EX_STAGE_SIZE-1 downto 0)
 
     );
 end EX_execute_stage;
@@ -68,7 +69,7 @@ component Ex_ALU is
         op2   : in std_logic_vector (ALU_SIZE-1 downto 0);
         operation : in std_logic_vector (4 downto 0);
         cin: in std_logic;
-
+        jmpzero:in std_logic;
         result: out std_logic_vector (ALU_SIZE-1 downto 0);
         flags: out std_logic_vector (2 downto 0)
     );
@@ -159,6 +160,10 @@ signal s_dstMuxOut: std_logic_vector(EX_STAGE_SIZE-1 downto 0);
 signal s_op1: std_logic_vector(EX_STAGE_SIZE-1 downto 0);
 signal s_op2: std_logic_vector(EX_STAGE_SIZE-1 downto 0);
 
+signal s_sjmp:std_logic_vector(0 downto 0);
+signal s_ojmp:std_logic_vector(0 downto 0);
+
+signal s_clear:std_logic;
 -------------------Arch---------------------    
 begin
 
@@ -171,7 +176,7 @@ begin
     l_srcMux: Ex_mux4x4 port map (i_RsrcVal, i_AluForwarding, i_MemForwarding, i_Offset_ImmVal, s_srcSel, s_op2);
 
     --Alu, flags and result:
-    l_alu: Ex_ALU port map (s_op1, s_op2, i_opDstSrc(12 downto 8), s_flagRegOut(0), s_result, s_aluFlagsOut);
+    l_alu: Ex_ALU port map (s_op1, s_op2, i_opDstSrc(12 downto 8), s_flagRegOut(0),i_control(2), s_result, s_aluFlagsOut);
     l_flagReg: Falling_register generic map(3) port map (i_clk, i_rst, '1', s_aluFlagsOut, s_flagRegOut);
     o_flag_reg <= s_flagRegOut;
 
@@ -179,7 +184,7 @@ begin
 
     --Jump unit:
     s_zeroFlag <= s_flagRegOut(1);
-    l_ju: Ex_jump_unit port map (i_control(1), i_control(2), s_zeroFlag, o_jmp);
+    l_ju: Ex_jump_unit port map (i_control(1), i_control(2), s_zeroFlag, s_sjmp(0));
 
     --Output port:
     l_outputPortReg: Reg generic map(EX_STAGE_SIZE) port map (i_clk, i_rst, i_control(7), s_dstMuxOut, o_outputPort);
@@ -189,4 +194,19 @@ begin
     l_buffControl: Falling_register generic map(18) port map (i_clk, i_rst, '1', i_control, o_buffControl);
     l_storeReg: Falling_register generic map(EX_STAGE_SIZE) port map (i_clk, i_rst, '1', s_dstMuxOut, o_RdstValStore);
 
+    -- o_jmpreg: Falling_register generic map(1) port map(i_clk, s_clear, '1', s_sjmp,s_ojmp);
+    o_jmp <=s_sjmp(0);
+process (i_clk)
+begin
+    if ((rising_edge(i_clk)) and s_ojmp(0)='1') or (i_rst='1') then
+        s_clear<='1';
+        else
+            s_clear<='0';
+    end if;
+    
+end process;
+o_wow <= s_dstMuxOut;
+    -- s_clear <=
+    -- '1' WHEN (s_ojmp(0)='1' AND(NOT(i_clk)='1')) OR i_rst='1'
+    -- ELSE '0';
 end EX_execute_stage_arch;

@@ -14,7 +14,7 @@ Z0 w1622991126
 Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 16
+!i122 811
 Z4 dD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor
 Z5 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/ControlUnit.vhd
 Z6 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/ControlUnit.vhd
@@ -24,9 +24,9 @@ VAn?JQ?E2:I`aQGPddmlOb2
 !s100 O3]E_Z12[7MD<hZHUaVV11
 Z7 OV;C;2020.1;71
 32
-Z8 !s110 1623013852
+Z8 !s110 1623046169
 !i10b 1
-Z9 !s108 1623013852.000000
+Z9 !s108 1623046169.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/ControlUnit.vhd|
 Z11 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/ControlUnit.vhd|
 !i113 1
@@ -37,7 +37,7 @@ R1
 R2
 R3
 DEx4 work 11 controlunit 0 22 An?JQ?E2:I`aQGPddmlOb2
-!i122 16
+!i122 811
 l12
 L11 30
 V>5_Mz:LInD6o?^`VDYZHU0
@@ -53,25 +53,25 @@ R11
 R12
 R13
 Edecodestage
-R0
+Z14 w1623045882
 R1
 R2
 R3
-!i122 17
+!i122 812
 R4
-Z14 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/DecodeStage.vhd
-Z15 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/DecodeStage.vhd
+Z15 8D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\DecodeStage.vhd
+Z16 FD:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\DecodeStage.vhd
 l0
 L4 1
-VS?Ll_ShF;iQi;hA_J;7ZE3
-!s100 aAdlCUVEGK_P7`5lK5a]81
+VLBQ22<LJZc2b0F^RoQd^83
+!s100 ?Y=IiG9[cN6Wag8l3b<]Z0
 R7
 32
-Z16 !s110 1623013853
+Z17 !s110 1623046170
 !i10b 1
-Z17 !s108 1623013853.000000
-Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/DecodeStage.vhd|
-Z19 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/DecodeStage.vhd|
+R9
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\DecodeStage.vhd|
+Z19 !s107 D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\DecodeStage.vhd|
 !i113 1
 R12
 R13
@@ -79,107 +79,107 @@ Adec
 R1
 R2
 R3
-DEx4 work 11 decodestage 0 22 S?Ll_ShF;iQi;hA_J;7ZE3
-!i122 17
-l103
-L17 192
-V9`>cCBORaAUM@R2[e_43E2
-!s100 2V^7o`^10F7NU@S<6iUIc3
+DEx4 work 11 decodestage 0 22 LBQ22<LJZc2b0F^RoQd^83
+!i122 812
+l114
+L17 204
+V8Z2>z`^_O57FB=N=>6;>O1
+!s100 ERBH2z=ahP94@onY]Y_gY0
 R7
 32
-R16
-!i10b 1
 R17
+!i10b 1
+R9
 R18
 R19
 !i113 1
 R12
 R13
 Eex_alu
-R0
-Z20 DPx8 synopsys 10 attributes 0 22 dc>JdEHRM@6GGENe5bZ?D1
-Z21 DPx4 ieee 14 std_logic_misc 0 22 dN]HY6l5ohPcZ:TaC@B;53
+Z20 w1623029838
+Z21 DPx8 synopsys 10 attributes 0 22 dc>JdEHRM@6GGENe5bZ?D1
+Z22 DPx4 ieee 14 std_logic_misc 0 22 dN]HY6l5ohPcZ:TaC@B;53
 R1
 R2
 R3
-!i122 18
+!i122 813
 R4
-Z22 8D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_ALU.vhd
-Z23 FD:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_ALU.vhd
+Z23 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd
+Z24 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd
 l0
 L6 1
-VK5JIa4VW>A3JzSjgmW62d3
-!s100 @0P93KQ:jaH=FdPD>P=KL0
+Vl_GZ[KZ=nV8W[5AX]fUWl0
+!s100 8[;YAD9G<:oTWGEjH3OD^0
 R7
 32
-R16
-!i10b 1
 R17
-Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_ALU.vhd|
-Z25 !s107 D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_ALU.vhd|
+!i10b 1
+Z25 !s108 1623046170.000000
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd|
+Z27 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd|
 !i113 1
 R12
 R13
 Aex_alu_arch
-R20
 R21
+R22
 R1
 R2
 R3
-DEx4 work 6 ex_alu 0 22 K5JIa4VW>A3JzSjgmW62d3
-!i122 18
-l35
-L18 54
-VdJ2J`<0DLLFdR_34Jc<RK1
-!s100 JA62S7SEDILAaaD>B<3F?3
+DEx4 work 6 ex_alu 0 22 l_GZ[KZ=nV8W[5AX]fUWl0
+!i122 813
+l39
+L19 66
+VYbh_?19l0=hid08izPPUa3
+!s100 kRfaTLYO^LEZD55hkK>8m2
 R7
 32
-R16
-!i10b 1
 R17
-R24
+!i10b 1
 R25
+R26
+R27
 !i113 1
 R12
 R13
 Eex_execute_stage
-R0
+Z28 w1623043542
 R2
 R3
-!i122 19
+!i122 814
 R4
-Z26 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/EX_execute_stage.vhd
-Z27 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/EX_execute_stage.vhd
+Z29 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/EX_execute_stage.vhd
+Z30 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/EX_execute_stage.vhd
 l0
 L4 1
-VWj<H:SQLWHHGB:ghiV9NB2
-!s100 FN^@^V8IQ3?Tafm1dUB=Y0
+VGGmYQSPAG6bUW3:oSGBA81
+!s100 nY[mXQ@E23LV5Cgd7^dSW0
 R7
 32
-R16
-!i10b 1
 R17
-Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/EX_execute_stage.vhd|
-Z29 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/EX_execute_stage.vhd|
+!i10b 1
+R25
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/EX_execute_stage.vhd|
+Z32 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/EX_execute_stage.vhd|
 !i113 1
 R12
 R13
 Aex_execute_stage_arch
 R2
 R3
-DEx4 work 16 ex_execute_stage 0 22 Wj<H:SQLWHHGB:ghiV9NB2
-!i122 19
-l163
-L61 132
-VmCIo;TG`8FAP7@S;=YIQo1
-!s100 WNI=kR7FWI:]60RGDo:L:0
+DEx4 work 16 ex_execute_stage 0 22 GGmYQSPAG6bUW3:oSGBA81
+!i122 814
+l168
+L62 151
+VjbKi7f=ieJIh3LbYD5dMd3
+!s100 OX]OYAEL>KmXP?[Gl3j7U3
 R7
 32
-R16
-!i10b 1
 R17
-R28
-R29
+!i10b 1
+R25
+R31
+R32
 !i113 1
 R12
 R13
@@ -188,21 +188,21 @@ R0
 R1
 R2
 R3
-!i122 20
+!i122 815
 R4
-Z30 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_forwarding_unit.vhd
-Z31 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_forwarding_unit.vhd
+Z33 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_forwarding_unit.vhd
+Z34 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_forwarding_unit.vhd
 l0
 L6 1
 V0]TozG45ChFnh1jN>n;@?1
 !s100 3Gz<4LiezZENeP757YYPD3
 R7
 32
-Z32 !s110 1623013854
+Z35 !s110 1623046171
 !i10b 1
-Z33 !s108 1623013854.000000
-Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_forwarding_unit.vhd|
-Z35 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_forwarding_unit.vhd|
+Z36 !s108 1623046171.000000
+Z37 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_forwarding_unit.vhd|
+Z38 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_forwarding_unit.vhd|
 !i113 1
 R12
 R13
@@ -211,40 +211,40 @@ R1
 R2
 R3
 DEx4 work 18 ex_forwarding_unit 0 22 0]TozG45ChFnh1jN>n;@?1
-!i122 20
+!i122 815
 l24
 L22 13
 Vh2EOmD@CUWe01WJ>>iF0@1
 !s100 jic0AlcMfofjO6cZU3zFP1
 R7
 32
-R32
-!i10b 1
-R33
-R34
 R35
+!i10b 1
+R36
+R37
+R38
 !i113 1
 R12
 R13
 Eex_jump_unit
-R0
+Z39 w1623020327
 R2
 R3
-!i122 21
+!i122 816
 R4
-Z36 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_jump_unit.vhd
-Z37 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_jump_unit.vhd
+Z40 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_jump_unit.vhd
+Z41 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_jump_unit.vhd
 l0
 L4 1
 VDUdMCdc^X_B;HJK2R<nHn3
 !s100 aKITBJn=6BRfJbf_Pk_f;2
 R7
 32
-R32
+R35
 !i10b 1
-R33
-Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_jump_unit.vhd|
-Z39 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_jump_unit.vhd|
+R36
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_jump_unit.vhd|
+Z43 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_jump_unit.vhd|
 !i113 1
 R12
 R13
@@ -252,18 +252,18 @@ Aex_jump_unit_arch
 R2
 R3
 DEx4 work 12 ex_jump_unit 0 22 DUdMCdc^X_B;HJK2R<nHn3
-!i122 21
+!i122 816
 l15
 L14 6
 V@HD7E>>EE7h_Jo[NYLd_n0
 !s100 SXYMAGk@<:7fF1_@8BzO33
 R7
 32
-R32
+R35
 !i10b 1
-R33
-R38
-R39
+R36
+R42
+R43
 !i113 1
 R12
 R13
@@ -271,21 +271,21 @@ Eex_mux2x2
 R0
 R2
 R3
-!i122 22
+!i122 817
 R4
-Z40 8D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_muxes.vhd
-Z41 FD:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_muxes.vhd
+Z44 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_muxes.vhd
+Z45 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_muxes.vhd
 l0
 L27 1
 VUm6BmK?4VCOIMVYNQ2@I@2
 !s100 NeCVF_HM=i<zfe6;[D;@20
 R7
 32
-R32
+Z46 !s110 1623046172
 !i10b 1
-R33
-Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_muxes.vhd|
-Z43 !s107 D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_muxes.vhd|
+Z47 !s108 1623046172.000000
+Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_muxes.vhd|
+Z49 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_muxes.vhd|
 !i113 1
 R12
 R13
@@ -293,18 +293,18 @@ Aex_mux2x2_arch
 R2
 R3
 DEx4 work 9 ex_mux2x2 0 22 Um6BmK?4VCOIMVYNQ2@I@2
-!i122 22
+!i122 817
 l36
 L35 7
 VnnH53fLj7fdgEQVESI@YN1
 !s100 J4z][I_5U>P7NeP692QQS2
 R7
 32
-R32
+R46
 !i10b 1
-R33
-R42
-R43
+R47
+R48
+R49
 !i113 1
 R12
 R13
@@ -312,21 +312,21 @@ Eex_mux4x4
 R0
 R2
 R3
-!i122 22
+!i122 817
 R4
-R40
-R41
+R44
+R45
 l0
 L4 1
 V2KP5WLB40j@2G1Dfe32BU3
 !s100 3mMcRC=B:EQ:cb0dLCTlc3
 R7
 32
-R32
+R46
 !i10b 1
-R33
-R42
-R43
+R47
+R48
+R49
 !i113 1
 R12
 R13
@@ -334,18 +334,18 @@ Aex_mux4x4_arch
 R2
 R3
 DEx4 work 9 ex_mux4x4 0 22 2KP5WLB40j@2G1Dfe32BU3
-!i122 22
+!i122 817
 l13
-Z44 L12 9
+Z50 L12 9
 V43n4d@6P47VYmU?1^:9e82
 !s100 c>V^=VkQ7M4>chooIIfCa2
 R7
 32
-R32
+R46
 !i10b 1
-R33
-R42
-R43
+R47
+R48
+R49
 !i113 1
 R12
 R13
@@ -353,21 +353,21 @@ Eex_ripple_adder
 R0
 R2
 R3
-!i122 24
+!i122 819
 R4
-Z45 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ripple_adder.vhd
-Z46 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ripple_adder.vhd
+Z51 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ripple_adder.vhd
+Z52 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ripple_adder.vhd
 l0
 L19 1
 Va><VPmOS1RXQ@gFCmD<H;1
 !s100 Q^EV]U:8kaYdj<=Q8jGfI3
 R7
 32
-Z47 !s110 1623013857
+Z53 !s110 1623046173
 !i10b 1
-Z48 !s108 1623013857.000000
-Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ripple_adder.vhd|
-Z50 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ripple_adder.vhd|
+Z54 !s108 1623046173.000000
+Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ripple_adder.vhd|
+Z56 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ripple_adder.vhd|
 !i113 1
 R12
 R13
@@ -375,52 +375,11 @@ Aarch_ripple_adder
 R2
 R3
 DEx4 work 15 ex_ripple_adder 0 22 a><VPmOS1RXQ@gFCmD<H;1
-!i122 24
+!i122 819
 l36
 L27 16
 V=e9D9ZV01dAC1VgS1RU<:1
 !s100 47^0G>PfU:TTTDm^VBF8]1
-R7
-32
-R47
-!i10b 1
-R48
-R49
-R50
-!i113 1
-R12
-R13
-Efalling_register
-R0
-R2
-R3
-!i122 23
-R4
-Z51 8D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_register.vhd
-Z52 FD:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_register.vhd
-l0
-L4 1
-VZ^z>?<_:WU2QEONOTYhkF3
-!s100 0Tfj=I0clF;jbG?G_ne[k2
-R7
-32
-Z53 !s110 1623013856
-!i10b 1
-Z54 !s108 1623013856.000000
-Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_register.vhd|
-Z56 !s107 D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_register.vhd|
-!i113 1
-R12
-R13
-Afalling_register_arch
-R2
-R3
-DEx4 work 16 falling_register 0 22 Z^z>?<_:WU2QEONOTYhkF3
-!i122 23
-l14
-L13 13
-Vl2BJdz>_f?@I61?gV2BM82
-!s100 FOXOf>HcnInlA8Oh=gG2Y1
 R7
 32
 R53
@@ -431,26 +390,67 @@ R56
 !i113 1
 R12
 R13
-Efetchstage
+Efalling_register
 R0
+R2
+R3
+!i122 818
+R4
+Z57 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_register.vhd
+Z58 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_register.vhd
+l0
+L4 1
+VZ^z>?<_:WU2QEONOTYhkF3
+!s100 0Tfj=I0clF;jbG?G_ne[k2
+R7
+32
+R53
+!i10b 1
+R47
+Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_register.vhd|
+Z60 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_register.vhd|
+!i113 1
+R12
+R13
+Afalling_register_arch
+R2
+R3
+DEx4 work 16 falling_register 0 22 Z^z>?<_:WU2QEONOTYhkF3
+!i122 818
+l14
+L13 13
+Vl2BJdz>_f?@I61?gV2BM82
+!s100 FOXOf>HcnInlA8Oh=gG2Y1
+R7
+32
+R53
+!i10b 1
+R47
+R59
+R60
+!i113 1
+R12
+R13
+Efetchstage
+Z61 w1623040590
 R1
 R2
 R3
-!i122 25
+!i122 820
 R4
-Z57 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd
-Z58 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd
+Z62 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd
+Z63 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd
 l0
 L5 1
 VnBgCW_aTU;8TNS@VI=Xjh2
 !s100 ]kVQj6efA;_=6AJaPOSff1
 R7
 32
-R47
+Z64 !s110 1623046174
 !i10b 1
-R48
-Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd|
-Z60 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd|
+R54
+Z65 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd|
+Z66 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/FetchStage.vhd|
 !i113 1
 R12
 R13
@@ -459,18 +459,18 @@ R1
 R2
 R3
 DEx4 work 10 fetchstage 0 22 nBgCW_aTU;8TNS@VI=Xjh2
-!i122 25
+!i122 820
 l60
 L20 70
 V`7n=MdAdVG0V4Mk?0U2zB2
 !s100 UUbZiUH`6fmS14H=c68b83
 R7
 32
-R47
+R64
 !i10b 1
-R48
-R59
-R60
+R54
+R65
+R66
 !i113 1
 R12
 R13
@@ -478,21 +478,21 @@ Efull_adder
 R0
 R2
 R3
-!i122 24
+!i122 819
 R4
-R45
-R46
+R51
+R52
 l0
 L4 1
 V_1d7CY<X=z>PZEi=ge3E;0
 !s100 U<^?56WZGDz=FN90lDN<C1
 R7
 32
-R47
+R53
 !i10b 1
-R48
-R49
-R50
+R54
+R55
+R56
 !i113 1
 R12
 R13
@@ -500,18 +500,18 @@ Aarch_full_adder
 R2
 R3
 DEx4 work 10 full_adder 0 22 _1d7CY<X=z>PZEi=ge3E;0
-!i122 24
+!i122 819
 l10
 L9 6
 VYm3CEc>=cXjXd=fN_G95G3
 !s100 >UTckPB5`ZK_o^8>6=PPM1
 R7
 32
-R47
+R53
 !i10b 1
-R48
-R49
-R50
+R54
+R55
+R56
 !i113 1
 R12
 R13
@@ -520,21 +520,21 @@ R0
 R1
 R2
 R3
-!i122 26
+!i122 821
 R4
-Z61 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd
-Z62 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd
+Z67 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd
+Z68 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd
 l0
 L4 1
 V@eL=NnG:NCL@GJnQIWId92
 !s100 AS5VE_^7L?lceIS6BRO8k0
 R7
 32
-R47
+R64
 !i10b 1
-R48
-Z63 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd|
-Z64 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd|
+Z69 !s108 1623046174.000000
+Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd|
+Z71 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/HazardDetectionUnit.vhd|
 !i113 1
 R12
 R13
@@ -543,41 +543,41 @@ R1
 R2
 R3
 DEx4 work 19 hazarddetectionunit 0 22 @eL=NnG:NCL@GJnQIWId92
-!i122 26
+!i122 821
 l13
-R44
+R50
 V0XU9R1]nPl3:=2C7MO9in2
 !s100 fOYk14aKOgRhZm8Z1baLZ2
 R7
 32
-R47
-!i10b 1
-R48
-R63
 R64
+!i10b 1
+R69
+R70
+R71
 !i113 1
 R12
 R13
 Eintegration
-Z65 w1623013531
+Z72 w1623046162
 R1
 R2
 R3
-!i122 27
+!i122 822
 R4
-Z66 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd
-Z67 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd
+Z73 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd
+Z74 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd
 l0
 L5 1
 VgYD]dUCY>c:1=6VUgoegF0
 !s100 aJgVRk3Kd>UMG@<[N911[2
 R7
 32
-Z68 !s110 1623013858
+Z75 !s110 1623046175
 !i10b 1
-Z69 !s108 1623013858.000000
-Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd|
-Z71 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd|
+R69
+Z76 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd|
+Z77 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd|
 !i113 1
 R12
 R13
@@ -586,18 +586,18 @@ R1
 R2
 R3
 DEx4 work 11 integration 0 22 gYD]dUCY>c:1=6VUgoegF0
-!i122 27
-l155
-L14 228
-VRTW82Pl;5>KGKOY0X:YZE0
-!s100 TPbH8R0Ajf7LaDFc[<lbI1
+!i122 822
+l157
+L14 231
+VQ?HeY;Z0VY?QLo9F:zdI_1
+!s100 8IYn`j5KnH0HiQ4eTAWl_1
 R7
 32
-R68
+R75
 !i10b 1
 R69
-R70
-R71
+R76
+R77
 !i113 1
 R12
 R13
@@ -606,21 +606,21 @@ R0
 R1
 R2
 R3
-!i122 28
+!i122 823
 R4
-Z72 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/MemoryStage.vhd
-Z73 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/MemoryStage.vhd
+Z78 8D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\MemoryStage.vhd
+Z79 FD:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\MemoryStage.vhd
 l0
 L5 1
 VMHz9Y8b_Cd>3DAdV[Tm]z0
 !s100 7g7j:Lfa[F1OWP5>D]GPc0
 R7
 32
-R68
+R75
 !i10b 1
-R69
-Z74 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/MemoryStage.vhd|
-Z75 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/MemoryStage.vhd|
+Z80 !s108 1623046175.000000
+Z81 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\MemoryStage.vhd|
+Z82 !s107 D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\MemoryStage.vhd|
 !i113 1
 R12
 R13
@@ -629,18 +629,18 @@ R1
 R2
 R3
 DEx4 work 11 memorystage 0 22 MHz9Y8b_Cd>3DAdV[Tm]z0
-!i122 28
+!i122 823
 l57
 L19 68
 VjGLDdU5M47<1CAAeZOei20
 !s100 m_1zlo9T0Ib_j15NRK7BK2
 R7
 32
-R68
-!i10b 1
-R69
-R74
 R75
+!i10b 1
+R80
+R81
+R82
 !i113 1
 R12
 R13
@@ -649,21 +649,21 @@ R0
 R1
 R2
 R3
-!i122 29
+!i122 824
 R4
-Z76 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd
-Z77 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd
+Z83 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd
+Z84 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd
 l0
 L5 1
 VI8hQDG46zM:g20POA@2:B0
 !s100 X2:L`_kRiTVJFaN<kTlVl2
 R7
 32
-R68
+R75
 !i10b 1
-R69
-Z78 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd|
-Z79 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd|
+R80
+Z85 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd|
+Z86 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd|
 !i113 1
 R12
 R13
@@ -672,40 +672,40 @@ R1
 R2
 R3
 DEx4 work 3 ram 0 22 I8hQDG46zM:g20POA@2:B0
-!i122 29
+!i122 824
 l18
 L15 16
 VzAAOEW4^R2:R__mMo>bA[2
 !s100 HA^42N1H;=An9E1;cAHHk0
 R7
 32
-R68
+Z87 !s110 1623046176
 !i10b 1
-R69
-R78
-R79
+R80
+R85
+R86
 !i113 1
 R12
 R13
 Ereg
-R0
+Z88 w1623042371
 R2
 R3
-!i122 30
+!i122 825
 R4
-Z80 8D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Reg.vhd
-Z81 FD:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Reg.vhd
+Z89 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd
+Z90 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd
 l0
 L4 1
 VH:S;KeB0XJMUmP<RR7dFF0
 !s100 K4@Y?PDSf0CDl@ZA_a_Mg0
 R7
 32
-Z82 !s110 1623013859
+R87
 !i10b 1
-R69
-Z83 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Reg.vhd|
-Z84 !s107 D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Reg.vhd|
+Z91 !s108 1623046176.000000
+Z92 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd|
+Z93 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd|
 !i113 1
 R12
 R13
@@ -713,18 +713,59 @@ Artl
 R2
 R3
 DEx4 work 3 reg 0 22 H:S;KeB0XJMUmP<RR7dFF0
-!i122 30
+!i122 825
 l16
 L15 11
 VPT=h2;TKBjkH>7^?T`lF72
 !s100 gj3cX;VbD_z1fm1SM4@BV3
 R7
 32
-R82
+R87
 !i10b 1
-R69
-R83
-R84
+R91
+R92
+R93
+!i113 1
+R12
+R13
+Ereg2
+R88
+R2
+R3
+!i122 825
+R4
+R89
+R90
+l0
+L34 1
+VZA`1b;@fCL4b4<o;=hALG1
+!s100 DCCA0jADhGd4:ole^Im4h3
+R7
+32
+R87
+!i10b 1
+R91
+R92
+R93
+!i113 1
+R12
+R13
+Artl2
+R2
+R3
+DEx4 work 4 reg2 0 22 ZA`1b;@fCL4b4<o;=hALG1
+!i122 825
+l46
+L45 12
+VQNkdUo36?P_OkafE==7=B3
+!s100 iBHODngF62]CS[C53ea?P0
+R7
+32
+R87
+!i10b 1
+R91
+R92
+R93
 !i113 1
 R12
 R13
@@ -733,21 +774,21 @@ R0
 R1
 R2
 R3
-!i122 31
+!i122 826
 R4
-Z85 8D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\WriteBackStage.vhd
-Z86 FD:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\WriteBackStage.vhd
+Z94 8D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/WriteBackStage.vhd
+Z95 FD:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/WriteBackStage.vhd
 l0
 L5 1
 VK?TJz;E2GFAHkdRBklPC:2
 !s100 aN[KF9?=S6U2VM7Za`N950
 R7
 32
-R82
+R87
 !i10b 1
-Z87 !s108 1623013859.000000
-Z88 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\WriteBackStage.vhd|
-!s107 D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\WriteBackStage.vhd|
+R91
+Z96 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/WriteBackStage.vhd|
+Z97 !s107 D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/WriteBackStage.vhd|
 !i113 1
 R12
 R13
@@ -755,19 +796,19 @@ Artl
 R1
 R2
 R3
-Z89 DEx4 work 14 writebackstage 0 22 K?TJz;E2GFAHkdRBklPC:2
-!i122 31
+Z98 DEx4 work 14 writebackstage 0 22 K?TJz;E2GFAHkdRBklPC:2
+!i122 826
 l20
-Z90 L18 11
-Z91 Vle?<Z^9bUlOQmG4=kCL=90
-Z92 !s100 bjSlT26CzoE04MC9Y?J2N0
+Z99 L18 11
+Z100 Vle?<Z^9bUlOQmG4=kCL=90
+Z101 !s100 bjSlT26CzoE04MC9Y?J2N0
 R7
 32
-R82
-!i10b 1
 R87
-R88
-Z93 !s107 D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\WriteBackStage.vhd|
+!i10b 1
+R91
+R96
+R97
 !i113 1
 R12
 R13
