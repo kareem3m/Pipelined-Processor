@@ -1,4 +1,13 @@
-{D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd}
+{D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Integration.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Integration.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity Integration
+-- Compiling architecture rtl of Integration
+
+} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Reg.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -27,6 +36,15 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Compiling entity Ex_ripple_adder
 -- Compiling architecture arch_ripple_adder of Ex_ripple_adder
 
+} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/DecodeStage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\DecodeStage.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity DecodeStage
+-- Compiling architecture Dec of DecodeStage
+
 } {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/RAM.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 -- Loading package STANDARD
@@ -51,15 +69,6 @@ Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 
 -- Loading package std_logic_1164
 -- Compiling entity EX_execute_stage
 -- Compiling architecture EX_execute_stage_arch of EX_execute_stage
-
-} {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/MemoryStage.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\MemoryStage.vhd}
-Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity MemoryStage
--- Compiling architecture rtl of MemoryStage
 
 } {} {}} {D:/CMP/CMP 3/CMP 302/Architecture/phase2/Pipelined-Processor/Ex_ALU.vhd} {1 {vcom -work work -2002 -explicit -stats=none {D:\CMP\CMP 3\CMP 302\Architecture\phase2\Pipelined-Processor\Ex_ALU.vhd}
 Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
