@@ -1,10 +1,13 @@
 # Pipelined processor
 *  A simple 5-stage pipelined processor with Harvard architecture.
 
+## Assembler
+* An assembler to convert assembly code for the Instruction Set to its binary representation.
+
 ## Instructions details 
 ![Instruction Image](inst.PNG)
 
-## Opcode 
+## Opcodes
 ![opcode Image](op1.PNG)
 ![opcode Image](op2.PNG)
 
